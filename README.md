@@ -2,7 +2,7 @@
 A generic framework on top of scapy for parsing/generation data from eobi/eti
 
 ## current point
-
+[ ] MessageFlows is not considered for now
 
 ## Python naming convention
 https://stackoverflow.com/questions/159720/what-is-the-naming-convention-in-python-for-variable-and-function-names

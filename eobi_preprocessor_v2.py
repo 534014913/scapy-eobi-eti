@@ -96,7 +96,7 @@ def main():
 
 	us = get_usages(xml_tree)
 	mf = get_message_flows(xml_tree)
-	pprint.pprint(mf)
+	return [dt, st, ts, us, mf]
 
 if __name__ == '__main__':
 	main()
