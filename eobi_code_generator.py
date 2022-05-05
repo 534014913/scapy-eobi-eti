@@ -1,6 +1,7 @@
 import sys
 import eobi_preprocessor_v2
 import itertools
+import re
 import xml.etree.ElementTree as ET
 
 def gen_header(o=sys.stdout):
@@ -165,8 +166,55 @@ def gen_blocks(version, st, dt, us, o=sys.stdout):
         gen_block(name, e, st, dt, us, sizes, min_sizes, max_sizes, version, o)
 
 
+
+def is_padding(t):
+    pad_re = re.compile('Pad[1-9]')
+    if t is not None:
+        return t.get('rootType') == 'String' and pad_re.match(t.get('name'))
+    return False
+
+
+def is_int(t):
+    if t is not None:
+        r = t.get('rootType')
+        return r in ('int', 'floatDecimal') or (r == 'String' and t.get('size') == '1')
+    return False
+
+
+def is_unsigned(t):
+    v = t.get('minValue')
+    return v is not None and not v.startswith('-')
+
+def pp_int_type(t):
+    if not is_int(t):
+        return None
+    s = 'i'
+    if is_unsigned(t):
+        s = 'u'
+    n = int(t.get('size'))
+    s += str(n)
+    return s
+
+
+def is_counter(t):
+    return t.get('type') == 'Counter'
+
+def is_enum(t):
+    if t is not None:
+        r = t.get('rootType')
+        if r == 'int' or (r == 'String' and t.get('size') == '1'):
+            return t.find('ValidValue') is not None
+    return False
+
+# name: name of the struct
+# e: xml obj of the struct
+# st: all the structures
+# dt: all the datatypes
+# us: usages, infor from Application messagesHi
+# size, min_sizes, max_sizes: size information about the struct
+# version: version info
 def gen_fields(e, st, dt, us, sizes, min_sizes, version, o=sys.stdout, comment=False, off=0, fname=None):
-    for m in e:
+    for m in e: # m is member of the message
         if comment:
             print('    #', end='')
         atts = []
@@ -237,6 +285,25 @@ def gen_fields(e, st, dt, us, sizes, min_sizes, version, o=sys.stdout, comment=F
             else:
                 off += l
 
+
+def is_elementary(t):
+    return t is not None and t.get('counter') is None
+
+def group_members(e, dt):
+    xs = []
+    ms = []
+    for m in e:
+        t = dt.get(m.get('type'))
+        if is_elementary(t):
+            ms.append(m)
+        else:
+            if ms:
+                xs.append(ms)
+                ms = []
+            xs.append([m])
+    if ms:
+        xs.append(ms)
+    return xs
 
 # name: name of the struct
 # e: xml obj of the struct
