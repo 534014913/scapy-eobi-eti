@@ -246,8 +246,11 @@ def gen_fields(e, st, dt, us, sizes, min_sizes, version, o=sys.stdout, comment=F
 			nv = t.get('noValue')
 			if nv:
 				dft_str = nv
-			print(f'{m.attrib} 1',file=sys.stderr)
-			print(f'''        StrLenField("{m.get('name')}", {dft_str}, {m.get('size')}),''', file=o)
+			# print(f'{m.attrib} 1',file=sys.stderr)
+			if t.get('size') == None:
+				print(f'{t.attrib} 1',file=sys.stderr)
+
+			print(f'''        StrLenField("{m.get('name')}", {dft_str}, {t.get('size')}),''', file=o)
 		else:
 			t = st.get(m.get('type'))
 			# print(t.get('type'), file=sys.stderr)
