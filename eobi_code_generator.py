@@ -264,7 +264,7 @@ def gen_fields(e, st, dt, us, sizes, min_sizes, version, o=sys.stdout, comment=F
                 print(
                     f'    {m.get("name")}: [{m.get("type")}] = field(default_factory=list)', end='', file=o)
 
-        atts.append(f'fmt:{type_to_fmt(t)}')
+        # atts.append(f'fmt:{type_to_fmt(t)}')
         atts.append(f'size:{sizes[m.get("type")]}')
         if off is not None:
             atts.append(f'off:{off}')

@@ -85,7 +85,7 @@ def get_message_flows(xml_tree):
 	return mf
 
 def main():
-	xml_tree = ET.parse(PATH_TO_ETI_SPEC)
+	xml_tree = ET.parse(PATH_TO_SPEC)
 	root = ET.parse(PATH_TO_SPEC).getroot()
 	info = (xml_tree.getroot().get('name'), xml_tree.getroot().get('version'))
 
