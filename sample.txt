@@ -1,0 +1,68 @@
+Frame 1: 164 bytes on wire (1312 bits), 164 bytes captured (1312 bits)
+    Encapsulation type: Raw IPv4 (129)
+    Arrival Time: May 10, 2022 17:13:04.989552000 BST
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1652199184.989552000 seconds
+    [Time delta from previous captured frame: 0.000000000 seconds]
+    [Time delta from previous displayed frame: 0.000000000 seconds]
+    [Time since reference or first frame: 0.000000000 seconds]
+    Frame Number: 1
+    Frame Length: 164 bytes (1312 bits)
+    Capture Length: 164 bytes (1312 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: ip:udp:eurex.derivatives.eobi.t7.v10.0.lua]
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 164
+    Identification: 0x0001 (1)
+    Flags: 0x00
+        0... .... = Reserved bit: Not set
+        .0.. .... = Don't fragment: Not set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: UDP (17)
+    Header Checksum: 0x7c46 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 127.0.0.1
+    Destination Address: 127.0.0.1
+User Datagram Protocol, Src Port: 65333, Dst Port: 65333
+    Source Port: 65333
+    Destination Port: 65333
+    Length: 144
+    Checksum: 0xcd6e [unverified]
+    [Checksum Status: Unverified]
+    [Stream index: 0]
+    [Timestamps]
+        [Time since first frame: 0.000000000 seconds]
+        [Time since previous frame: 0.000000000 seconds]
+    UDP payload (136 bytes)
+Eurex Derivatives Eobi T7 10.0 (136 Bytes)
+    Packet Header: 
+        Packet Info: 
+            Header Length: 32
+            Packet Id: 0
+            Packet Sequence Number: 0
+        Appl Seq Num: 0
+        Market Segment Id: 0
+        Partition Id: 0
+        Completion Indicator: Incomplete (0)
+        Appl Seq Reset Indicator: No Reset (0)
+        Pad 5: 00 30 30 30 30
+        Transact Time: 0
+    Message: 
+        Message Header Comp: 
+            Body Len: 104
+            Template Id: 13400
+            Msg Seq Num: 0
+Lua Error: ...ins/Eurex.Derivatives.Eobi.T7.v10.0.Script.Dissector.lua:4565: Range is out of bounds
+    [Expert Info (Error/Undecoded): Lua Error: ...ins/Eurex.Derivatives.Eobi.T7.v10.0.Script.Dissector.lua:4565: Range is out of bounds]
+        [Lua Error: ...ins/Eurex.Derivatives.Eobi.T7.v10.0.Script.Dissector.lua:4565: Range is out of bounds]
+        [Severity level: Error]
+        [Group: Undecoded]
+
