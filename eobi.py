@@ -351,13 +351,13 @@ class InstrmtLegGrpComp(Packet):
 
     fields_desc = [
         LESignedIntField("LegSymbol", 0),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("Pad4", "0000", 4),
         LESignedLongField("LegSecurityID", 0),
         LESignedLongField("LegPrice", 0),
         LESignedIntField("LegRatioQty", 0),
         ByteField("LegSecurityType", 0),
         ByteField("LegSide", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -372,9 +372,9 @@ class MDInstrumentEntryGrpComp(Packet):
         LESignedLongField("MDEntryPx", 0),
         LESignedLongField("MDEntrySize", 0),
         ByteField("MDEntryType", 0),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("Pad1", "0", 1),
         LEShortField("TradeCondition", 0),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("Pad4", "0000", 4),
     ]
 
 
@@ -389,7 +389,7 @@ class MDTradeEntryGrpComp(Packet):
         LESignedLongField("MDEntryPx", 0),
         LESignedLongField("MDEntrySize", 0),
         ByteField("MDEntryType", 0),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -419,7 +419,7 @@ class OrderDetailsComp(Packet):
         LESignedLongField("DisplayQty", 0),
         ByteField("Side", 0),
         ByteField("OrdType", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
         LESignedLongField("Price", 0),
     ]
 
@@ -440,7 +440,7 @@ class SecMassStatGrpComp(Packet):
         ByteField("MarketCondition", 0),
         ByteField("SecurityTradingEvent", 0),
         ByteField("SoldOutIndicator", 0),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("Pad3", "000", 3),
     ]
 
 
@@ -458,10 +458,10 @@ class AddComplexInstrument(Packet):
         LESignedIntField("SecuritySubType", 0),
         ByteField("ProductComplex", 0),
         ByteField("ImpliedMarketIndicator", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
         LEIntField("LegRatioMultiplier", 0),
         ByteField("NoLegs", 0),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("Pad3", "000", 3),
         PacketListField("InstrmtLegGrp", None, InstrmtLegGrpComp),
     ]
 
@@ -489,7 +489,7 @@ class AuctionBBO(Packet):
         ByteField("PotentialSecurityTradingEvent", 0),
         ByteField("BidOrdType", 0),
         ByteField("OfferOrdType", 0),
-        StrLenField("Pad5", "00000", 5),
+        StrFixedLenField("Pad5", "00000", 5),
     ]
 
 
@@ -514,7 +514,7 @@ class AuctionClearingPrice(Packet):
         LESignedLongField("ImbalanceQty", 0),
         ByteField("SecurityTradingStatus", 0),
         ByteField("PotentialSecurityTradingEvent", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -538,7 +538,7 @@ class CrossRequest(Packet):
         ByteField("Side", 0),
         ByteField("CrossRequestType", 0),
         ByteField("InputSource", 0),
-        StrLenField("Pad5", "00000", 5),
+        StrFixedLenField("Pad5", "00000", 5),
         LELongField("TransactTime", 0),
     ]
 
@@ -563,9 +563,9 @@ class ExecutionSummary(Packet):
         LELongField("ExecID", 0),
         LESignedLongField("LastQty", 0),
         ByteField("AggressorSide", 0),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("Pad1", "0", 1),
         LEShortField("TradeCondition", 0),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("Pad4", "0000", 4),
         LESignedLongField("LastPx", 0),
         LESignedLongField("RestingHiddenQty", 0),
         LESignedLongField("RestingCxlQty", 0),
@@ -589,7 +589,7 @@ class FullOrderExecution(Packet):
         ByteField("Side", 0),
         ByteField("OrdType", 0),
         ByteField("AlgorithmicTradeIndicator", 0),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("Pad1", "0", 1),
         LEIntField("TrdMatchID", 0),
         LESignedLongField("Price", 0),
         LELongField("TrdRegTSTimePriority", 0),
@@ -614,7 +614,7 @@ class Heartbeat(Packet):
     fields_desc = [
         PacketField("MessageHeader", None, MessageHeaderComp),
         LEIntField("LastMsgSeqNumProcessed", 0),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("Pad4", "0000", 4),
     ]
 
 
@@ -639,7 +639,7 @@ class InstrumentStateChange(Packet):
         ByteField("FastMarketIndicator", 0),
         ByteField("SecurityTradingEvent", 0),
         ByteField("SoldOutIndicator", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
         LESignedLongField("HighPx", 0),
         LESignedLongField("LowPx", 0),
         LELongField("TransactTime", 0),
@@ -674,7 +674,7 @@ class InstrumentSummary(Packet):
         LESignedLongField("LowPx", 0),
         ByteField("ProductComplex", 0),
         ByteField("NoMDEntries", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
         PacketListField("MDInstrumentEntryGrp", None, MDInstrumentEntryGrpComp),
     ]
 
@@ -700,11 +700,11 @@ class MassInstrumentStateChange(Packet):
         ByteField("FastMarketIndicator", 0),
         ByteField("SecurityMassTradingEvent", 0),
         ByteField("MassSoldOutIndicator", 0),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("Pad1", "0", 1),
         LELongField("TransactTime", 0),
         ByteField("LastFragment", 0),
         ByteField("NoRelatedSym", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
         PacketListField("SecMassStatGrp", None, SecMassStatGrpComp),
     ]
 
@@ -834,10 +834,37 @@ class PacketHeader(Packet):
         ByteField("CompletionIndicator", 0),
         ByteField("ApplSeqResetIndicator", 0),
         ByteField("DSCP", 0),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("Pad4", "0000", 4),
         LELongField("TransactTime", 0),
     ]
 
+    def guess_payload_class(self, payload):
+        t = struct.unpack('<h', payload[2:4])[0]
+        if t == 13001: return Heartbeat
+        if t == 13005: return PacketHeader
+        if t == 13100: return OrderAdd
+        if t == 13101: return OrderModify
+        if t == 13102: return OrderDelete
+        if t == 13103: return OrderMassDelete
+        if t == 13104: return FullOrderExecution
+        if t == 13105: return PartialOrderExecution
+        if t == 13106: return OrderModifySamePrio
+        if t == 13200: return TradeReversal
+        if t == 13201: return TradeReport
+        if t == 13202: return ExecutionSummary
+        if t == 13300: return ProductStateChange
+        if t == 13301: return InstrumentStateChange
+        if t == 13302: return MassInstrumentStateChange
+        if t == 13400: return AddComplexInstrument
+        if t == 13500: return AuctionBBO
+        if t == 13501: return AuctionClearingPrice
+        if t == 13502: return CrossRequest
+        if t == 13503: return QuoteRequest
+        if t == 13504: return TopOfBook
+        if t == 13600: return ProductSummary
+        if t == 13601: return InstrumentSummary
+        if t == 13602: return SnapshotOrder
+        else: return Packet.guess_payload_class(self, payload)
 
     def post_build(self, p, pay):
         # p += pay  # if you also want the payload to be taken into account
@@ -856,7 +883,7 @@ class PartialOrderExecution(Packet):
         ByteField("Side", 0),
         ByteField("OrdType", 0),
         ByteField("AlgorithmicTradeIndicator", 0),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("Pad1", "0", 1),
         LEIntField("TrdMatchID", 0),
         LESignedLongField("Price", 0),
         LELongField("TrdRegTSTimePriority", 0),
@@ -885,7 +912,7 @@ class ProductStateChange(Packet):
         ByteField("TradSesStatus", 0),
         ByteField("MarketCondition", 0),
         ByteField("FastMarketIndicator", 0),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("Pad3", "000", 3),
         LELongField("TransactTime", 0),
     ]
 
@@ -910,7 +937,7 @@ class ProductSummary(Packet):
         ByteField("TradSesStatus", 0),
         ByteField("MarketCondition", 0),
         ByteField("FastMarketIndicator", 0),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -931,7 +958,7 @@ class QuoteRequest(Packet):
         LESignedLongField("SecurityID", 0),
         LESignedLongField("LastQty", 0),
         ByteField("Side", 0),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Pad7", "0000000", 7),
         LELongField("TransactTime", 0),
     ]
 
@@ -976,7 +1003,7 @@ class TopOfBook(Packet):
         LESignedLongField("OfferSize", 0),
         LEShortField("NumberOfBuyOrders", 0),
         LEShortField("NumberOfSellOrders", 0),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("Pad4", "0000", 4),
     ]
 
 
@@ -1002,9 +1029,9 @@ class TradeReport(Packet):
         ByteField("MatchType", 0),
         ByteField("MatchSubType", 0),
         ByteField("AlgorithmicTradeIndicator", 0),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("Pad1", "0", 1),
         LEShortField("TradeCondition", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -1029,9 +1056,9 @@ class TradeReversal(Packet):
         LELongField("TrdRegTSExecutionTime", 0),
         LEIntField("TrdMatchID", 0),
         LEShortField("TradeCondition", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
         ByteField("NoMDEntries", 0),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Pad7", "0000000", 7),
         PacketListField("MDTradeEntryGrp", None, MDTradeEntryGrpComp),
     ]
 
@@ -1044,3 +1071,4 @@ class TradeReversal(Packet):
             p = struct.pack("<H", tmp_len) + p[2:]
         return p + pay # edit if previous is changed
 	
+bind_layers(UDP, PacketHeader, sport=65333, dport=65333)

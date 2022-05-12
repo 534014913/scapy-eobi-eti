@@ -1,4 +1,4 @@
-from gen2 import *
+from eobi import *
 import subprocess
 import xml.etree.ElementTree as ET
 
@@ -484,5 +484,4 @@ if __name__ == '__main__':
     auction_clearing_test()
     product_state_change_test()
     instrument_summary_test()
-    # add_compliex_instrument_test()
-
+    subprocess.run("rm test.pcap".split(' '))

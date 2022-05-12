@@ -1176,7 +1176,7 @@ class AffectedOrderRequestsGrpComp(Packet):
 
     fields_desc = [
         LEIntField("AffectedOrderRequestID", 0),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("Pad4", "0000", 4),
     ]
 
 
@@ -1192,7 +1192,7 @@ class BasketExecGrpComp(Packet):
         LESignedIntField("SideMarketSegmentID", 0),
         LEIntField("AllocID", 0),
         LEShortField("SideTrdSubTyp", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -1205,10 +1205,10 @@ class BasketRootPartyGrpComp(Packet):
 
     fields_desc = [
         LEShortField("RootPartySubIDType", 0),
-        StrLenField("RootPartyContraFirm", 0x00, 5),
-        StrLenField("RootPartyContraTrader", 0x00, 6),
-        StrLenField("BasketSideTradeReportID", 0x00, 20),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("RootPartyContraFirm", 0x00, 5),
+        StrFixedLenField("RootPartyContraTrader", 0x00, 6),
+        StrFixedLenField("BasketSideTradeReportID", 0x00, 20),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -1237,20 +1237,20 @@ class BasketSideAllocExtBCGrpComp(Packet):
         ByteField("TradeAllocStatus", 0),
         ByteField("ProductComplex", 0),
         ByteField("TradePublishIndicator", 0),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
-        StrLenField("Account", 0x00, 2),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
-        StrLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
-        StrLenField("PartyIDOrderOriginationFirm", 0x00, 7),
-        StrLenField("PartyIDBeneficiary", 0x00, 9),
-        StrLenField("PartyIDPositionAccount", 0x00, 32),
-        StrLenField("PartyIDLocationID", 0x00, 2),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("Account", 0x00, 2),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("PartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("PartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("PartyIDPositionAccount", 0x00, 32),
+        StrFixedLenField("PartyIDLocationID", 0x00, 2),
         ByteField("CustOrderHandlingInst", 0),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("Pad4", "0000", 4),
     ]
 
 
@@ -1277,20 +1277,20 @@ class BasketSideAllocExtGrpComp(Packet):
         ByteField("PartyIdInvestmentDecisionMakerQualifier", 0),
         ByteField("OrderAttributeRiskReduction", 0),
         ByteField("OrderOrigination", 0),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
-        StrLenField("Account", 0x00, 2),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
-        StrLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
-        StrLenField("PartyIDOrderOriginationFirm", 0x00, 7),
-        StrLenField("PartyIDBeneficiary", 0x00, 9),
-        StrLenField("PartyIDPositionAccount", 0x00, 32),
-        StrLenField("PartyIDLocationID", 0x00, 2),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("Account", 0x00, 2),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("PartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("PartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("PartyIDPositionAccount", 0x00, 32),
+        StrFixedLenField("PartyIDLocationID", 0x00, 2),
         ByteField("CustOrderHandlingInst", 0),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -1308,9 +1308,9 @@ class BasketSideAllocGrpComp(Packet):
         ByteField("Side", 0),
         ByteField("InstrmtMatchSideID", 0),
         ByteField("TradeAllocStatus", 0),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("Pad4", "0000", 4),
     ]
 
 
@@ -1325,7 +1325,7 @@ class CrossRequestAckSideGrpComp(Packet):
         LELongField("OrderID", 0),
         ByteField("InputSource", 0),
         ByteField("Side", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -1349,17 +1349,17 @@ class CrossRequestSideGrpComp(Packet):
         ByteField("PartyIdInvestmentDecisionMakerQualifier", 0),
         ByteField("PositionEffect", 0),
         ByteField("CustOrderHandlingInst", 0),
-        StrLenField("Account", 0x00, 2),
-        StrLenField("PartyIDPositionAccount", 0x00, 32),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
-        StrLenField("PartyIDOrderOriginationFirm", 0x00, 7),
-        StrLenField("PartyIDBeneficiary", 0x00, 9),
-        StrLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
-        StrLenField("SideComplianceText", 0x00, 20),
-        StrLenField("PartyIDLocationID", 0x00, 2),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Account", 0x00, 2),
+        StrFixedLenField("PartyIDPositionAccount", 0x00, 32),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("PartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("PartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("SideComplianceText", 0x00, 20),
+        StrFixedLenField("PartyIDLocationID", 0x00, 2),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -1373,15 +1373,15 @@ class EnrichmentRulesGrpComp(Packet):
     fields_desc = [
         LEShortField("EnrichmentRuleID", 0),
         ByteField("PartyIDOriginationMarket", 0),
-        StrLenField("Account", 0x00, 2),
+        StrFixedLenField("Account", 0x00, 2),
         ByteField("PositionEffect", 0),
-        StrLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
-        StrLenField("PartyIDOrderOriginationFirm", 0x00, 7),
-        StrLenField("PartyIDBeneficiary", 0x00, 9),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("PartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("PartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("Pad1", "0", 1),
     ]
 
 
@@ -1398,7 +1398,7 @@ class FillsGrpComp(Packet):
         LEIntField("FillMatchID", 0),
         LESignedIntField("FillExecID", 0),
         ByteField("FillLiquidityInd", 0),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -1416,7 +1416,7 @@ class InstrmntLegExecGrpComp(Packet):
         LESignedIntField("LegExecID", 0),
         ByteField("LegSide", 0),
         ByteField("FillRefID", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -1434,7 +1434,7 @@ class InstrmtLegGrpComp(Packet):
         LEIntField("LegRatioQty", 0),
         ByteField("LegSide", 0),
         ByteField("LegSecurityType", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -1457,8 +1457,8 @@ class InstrmtMatchSideGrpComp(Packet):
         ByteField("TradePublishIndicator", 0),
         ByteField("InstrmtMatchSideID", 0),
         ByteField("EffectOnBasket", 0),
-        StrLenField("TradeReportText", 0x00, 20),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("TradeReportText", 0x00, 20),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -1471,8 +1471,8 @@ class InstrumentAttributeGrpComp(Packet):
 
     fields_desc = [
         ByteField("InstrAttribType", 0),
-        StrLenField("InstrAttribValue", 0x00, 32),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("InstrAttribValue", 0x00, 32),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -1486,7 +1486,7 @@ class InstrumentEventGrpComp(Packet):
     fields_desc = [
         LEIntField("EventDate", 0),
         ByteField("EventType", 0),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("Pad3", "000", 3),
     ]
 
 
@@ -1498,9 +1498,9 @@ class LegOrdGrpComp(Packet):
 	# sizes = (8, 8)
 
     fields_desc = [
-        StrLenField("LegAccount", 0x00, 2),
+        StrFixedLenField("LegAccount", 0x00, 2),
         ByteField("LegPositionEffect", 0),
-        StrLenField("Pad5", "00000", 5),
+        StrFixedLenField("Pad5", "00000", 5),
     ]
 
 
@@ -1531,8 +1531,8 @@ class MessageHeaderInComp(Packet):
     fields_desc = [
         LEIntField("BodyLen", 0),
         LEShortField("TemplateID", 0),
-        StrLenField("NetworkMsgID", 0x00, 8),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("NetworkMsgID", 0x00, 8),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -1546,7 +1546,7 @@ class MessageHeaderOutComp(Packet):
     fields_desc = [
         LEIntField("BodyLen", 0),
         LEShortField("TemplateID", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -1562,7 +1562,7 @@ class NRBCHeaderComp(Packet):
         LEIntField("ApplSubID", 0),
         ByteField("ApplID", 0),
         ByteField("LastFragment", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -1581,7 +1581,7 @@ class NRResponseHeaderMEComp(Packet):
         LELongField("SendingTime", 0),
         LEIntField("MsgSeqNum", 0),
         ByteField("LastFragment", 0),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("Pad3", "000", 3),
     ]
 
 
@@ -1637,7 +1637,7 @@ class OrderBookItemGrpComp(Packet):
         LESignedLongField("BestOfferSize", 0),
         ByteField("MDBookType", 0),
         ByteField("MDSubBookType", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -1653,7 +1653,7 @@ class OrderEventGrpComp(Packet):
         LESignedLongField("OrderEventQty", 0),
         LEIntField("OrderEventMatchID", 0),
         ByteField("OrderEventReason", 0),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("Pad3", "000", 3),
     ]
 
 
@@ -1666,11 +1666,11 @@ class PartyDetailsGrpComp(Packet):
 
     fields_desc = [
         LEIntField("PartyDetailIDExecutingTrader", 0),
-        StrLenField("PartyDetailExecutingTrader", 0x00, 6),
+        StrFixedLenField("PartyDetailExecutingTrader", 0x00, 6),
         ByteField("PartyDetailRoleQualifier", 0),
         ByteField("PartyDetailStatus", 0),
-        StrLenField("PartyDetailDeskID", 0x00, 3),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("PartyDetailDeskID", 0x00, 3),
+        StrFixedLenField("Pad1", "0", 1),
     ]
 
 
@@ -1687,7 +1687,7 @@ class QuotReqLegsGrpComp(Packet):
         LESignedIntField("LegSymbol", 0),
         ByteField("LegSecurityType", 0),
         ByteField("LegSide", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -1704,7 +1704,7 @@ class QuoteEntryAckGrpComp(Packet):
         LEIntField("QuoteEntryRejectReason", 0),
         ByteField("QuoteEntryStatus", 0),
         ByteField("Side", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -1742,7 +1742,7 @@ class QuoteEventGrpComp(Packet):
         ByteField("QuoteEventSide", 0),
         ByteField("QuoteEventLiquidityInd", 0),
         ByteField("QuoteEventReason", 0),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("Pad4", "0000", 4),
     ]
 
 
@@ -1760,7 +1760,7 @@ class QuoteLegExecGrpComp(Packet):
         LESignedIntField("LegExecID", 0),
         ByteField("LegSide", 0),
         ByteField("NoQuoteEventsIndex", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -1779,7 +1779,7 @@ class RBCHeaderComp(Packet):
         ByteField("ApplResendFlag", 0),
         ByteField("ApplID", 0),
         ByteField("LastFragment", 0),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -1796,11 +1796,11 @@ class RBCHeaderMEComp(Packet):
         LELongField("SendingTime", 0),
         LEIntField("ApplSubID", 0),
         LEShortField("PartitionID", 0),
-        StrLenField("ApplMsgID", 0x00000000000000000000000000000000, 16),
+        StrFixedLenField("ApplMsgID", 0x00000000000000000000000000000000, 16),
         ByteField("ApplID", 0),
         ByteField("ApplResendFlag", 0),
         ByteField("LastFragment", 0),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -1828,7 +1828,7 @@ class ResponseHeaderComp(Packet):
         LELongField("RequestTime", 0),
         LELongField("SendingTime", 0),
         LEIntField("MsgSeqNum", 0),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("Pad4", "0000", 4),
     ]
 
 
@@ -1848,7 +1848,7 @@ class ResponseHeaderMEComp(Packet):
         LEIntField("MsgSeqNum", 0),
         LEShortField("PartitionID", 0),
         ByteField("ApplID", 0),
-        StrLenField("ApplMsgID", 0x00000000000000000000000000000000, 16),
+        StrFixedLenField("ApplMsgID", 0x00000000000000000000000000000000, 16),
         ByteField("LastFragment", 0),
     ]
 
@@ -1863,7 +1863,7 @@ class RiskLimitQtyGrpComp(Packet):
     fields_desc = [
         LESignedLongField("RiskLimitQty", 0),
         ByteField("RiskLimitType", 0),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -1882,8 +1882,8 @@ class RiskLimitsRptGrpComp(Packet):
         ByteField("RiskLimitType", 0),
         ByteField("RiskLimitRequestingPartyRole", 0),
         ByteField("RiskLimitViolationIndicator", 0),
-        StrLenField("RiskLimitGroup", 0x00, 3),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("RiskLimitGroup", 0x00, 3),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -1898,7 +1898,7 @@ class SRQSHitQuoteGrpComp(Packet):
         LESignedLongField("OrderQty", 0),
         LELongField("QuoteID", 0),
         ByteField("Side", 0),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -1925,10 +1925,10 @@ class SRQSTargetPartyTrdGrpComp(Packet):
         LESignedLongField("SideLastQty", 0),
         LELongField("QuoteID", 0),
         LEIntField("TargetPartyIDExecutingTrader", 0),
-        StrLenField("TargetPartyExecutingFirm", 0x00, 5),
-        StrLenField("TargetPartyExecutingTrader", 0x00, 6),
-        StrLenField("TargetPartyEnteringTrader", 0x00, 6),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("TargetPartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("TargetPartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("TargetPartyEnteringTrader", 0x00, 6),
+        StrFixedLenField("Pad3", "000", 3),
     ]
 
 
@@ -1943,7 +1943,7 @@ class SessionsGrpComp(Packet):
         LEIntField("PartyIDSessionID", 0),
         ByteField("SessionMode", 0),
         ByteField("SessionSubMode", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -1960,9 +1960,9 @@ class SideAllocExtGrpComp(Packet):
         LELongField("PartyIdInvestmentDecisionMaker", 0),
         LELongField("ExecutingTrader", 0),
         LEIntField("IndividualAllocID", 0),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("Pad1", "0", 1),
         LEIntField("TESEnrichmentRuleID", 0),
         ByteField("Side", 0),
         ByteField("TradeAllocStatus", 0),
@@ -1973,18 +1973,18 @@ class SideAllocExtGrpComp(Packet):
         ByteField("PartyIdInvestmentDecisionMakerQualifier", 0),
         ByteField("OrderAttributeRiskReduction", 0),
         ByteField("OrderOrigination", 0),
-        StrLenField("Account", 0x00, 2),
-        StrLenField("PartyIDPositionAccount", 0x00, 32),
-        StrLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
-        StrLenField("PartyIDOrderOriginationFirm", 0x00, 7),
-        StrLenField("PartyIDBeneficiary", 0x00, 9),
-        StrLenField("PartyIDLocationID", 0x00, 2),
+        StrFixedLenField("Account", 0x00, 2),
+        StrFixedLenField("PartyIDPositionAccount", 0x00, 32),
+        StrFixedLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("PartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("PartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("PartyIDLocationID", 0x00, 2),
         ByteField("CustOrderHandlingInst", 0),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("Pad1_1", "0", 1),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("Pad1_1", "0", 1),
     ]
 
 
@@ -2000,9 +2000,9 @@ class SideAllocGrpComp(Packet):
         LEIntField("IndividualAllocID", 0),
         LEIntField("TESEnrichmentRuleID", 0),
         ByteField("Side", 0),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("Pad4", "0000", 4),
     ]
 
 
@@ -2018,11 +2018,11 @@ class SideAllocGrpBCComp(Packet):
         LELongField("ReversalApprovalTime", 0),
         LEIntField("IndividualAllocID", 0),
         LEIntField("TESEnrichmentRuleID", 0),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
         ByteField("Side", 0),
         ByteField("TradeAllocStatus", 0),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("Pad3", "000", 3),
     ]
 
 
@@ -2036,8 +2036,8 @@ class SideCrossLegGrpComp(Packet):
     fields_desc = [
         ByteField("LegInputSource", 0),
         ByteField("LegPositionEffect", 0),
-        StrLenField("LegAccount", 0x00, 2),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("LegAccount", 0x00, 2),
+        StrFixedLenField("Pad4", "0000", 4),
     ]
 
 
@@ -2049,9 +2049,9 @@ class SmartPartyDetailGrpComp(Packet):
 	# sizes = (16, 16)
 
     fields_desc = [
-        StrLenField("PartyDetailExecutingUnit", 0x00, 5),
-        StrLenField("PartyDetailExecutingTrader", 0x00, 6),
-        StrLenField("Pad5", "00000", 5),
+        StrFixedLenField("PartyDetailExecutingUnit", 0x00, 5),
+        StrFixedLenField("PartyDetailExecutingTrader", 0x00, 6),
+        StrFixedLenField("Pad5", "00000", 5),
     ]
 
 
@@ -2072,11 +2072,11 @@ class TargetPartiesComp(Packet):
         ByteField("FreeText5DisclosureInstruction", 0),
         ByteField("PartyOrderOriginationDisclosureInstruction", 0),
         ByteField("QuoteInstruction", 0),
-        StrLenField("TargetPartyExecutingFirm", 0x00, 5),
-        StrLenField("TargetPartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("TargetPartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("TargetPartyExecutingTrader", 0x00, 6),
         ByteField("PartyDetailStatus", 0),
         ByteField("PartyDetailStatusInformation", 0),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -2102,9 +2102,9 @@ class UnderlyingStipGrpComp(Packet):
 	# sizes = (40, 40)
 
     fields_desc = [
-        StrLenField("UnderlyingStipValue", 0x00, 32),
-        StrLenField("UnderlyingStipType", 0x00, 7),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("UnderlyingStipValue", 0x00, 32),
+        StrFixedLenField("UnderlyingStipType", 0x00, 7),
+        StrFixedLenField("Pad1", "0", 1),
     ]
 
 
@@ -2122,8 +2122,8 @@ class AddComplexInstrumentRequest(Packet):
         LESignedIntField("SecuritySubType", 0),
         ByteField("ProductComplex", 0),
         ByteField("NoLegs", 0),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("Pad2", "00", 2),
         PacketListField("InstrmtLegGrp", None, InstrmtLegGrpComp),
     ]
 
@@ -2182,8 +2182,8 @@ class AddFlexibleInstrumentRequest(Packet):
         ByteField("OptAttribute", 0),
         ByteField("PutOrCall", 0),
         ByteField("ExerciseStyle", 0),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("Pad4", "0000", 4),
     ]
 
 
@@ -2213,7 +2213,7 @@ class AddFlexibleInstrumentResponse(Packet):
         ByteField("OptAttribute", 0),
         ByteField("PutOrCall", 0),
         ByteField("ExerciseStyle", 0),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -2243,8 +2243,8 @@ class AmendBasketTradeRequest(Packet):
         ByteField("BasketTradeReportType", 0),
         ByteField("NoBasketRootPartyGrps", 0),
         ByteField("NoInstrmtMatchSides", 0),
-        StrLenField("BasketTradeReportText", 0x00, 20),
-        StrLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("BasketTradeReportText", 0x00, 20),
+        StrFixedLenField("TradeReportID", 0x00, 20),
         PacketListField("BasketRootPartyGrp", None, BasketRootPartyGrpComp),
         PacketListField("InstrmtMatchSideGrp", None, InstrmtMatchSideGrpComp),
         PacketListField("BasketSideAllocGrp", None, BasketSideAllocGrpComp),
@@ -2273,10 +2273,10 @@ class ApproveBasketTradeRequest(Packet):
         LEShortField("NoBasketSideAlloc", 0),
         LEShortField("TrdType", 0),
         ByteField("TradeReportType", 0),
-        StrLenField("BasketTradeReportText", 0x00, 20),
-        StrLenField("TradeReportID", 0x00, 20),
-        StrLenField("BasketSideTradeReportID", 0x00, 20),
-        StrLenField("Pad5", "00000", 5),
+        StrFixedLenField("BasketTradeReportText", 0x00, 20),
+        StrFixedLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("BasketSideTradeReportID", 0x00, 20),
+        StrFixedLenField("Pad5", "00000", 5),
         PacketListField("BasketSideAllocExtGrp", None, BasketSideAllocExtGrpComp),
     ]
 
@@ -2302,8 +2302,8 @@ class ApproveReverseTESTradeRequest(Packet):
         LEIntField("TESExecID", 0),
         LESignedIntField("RelatedMarketSegmentID", 0),
         LEShortField("TrdType", 0),
-        StrLenField("TradeReportID", 0x00, 20),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -2341,21 +2341,21 @@ class ApproveTESTradeRequest(Packet):
         ByteField("ExecutingTraderQualifier", 0),
         ByteField("OrderAttributeRiskReduction", 0),
         ByteField("OrderOrigination", 0),
-        StrLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("TradeReportID", 0x00, 20),
         ByteField("PositionEffect", 0),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
-        StrLenField("Account", 0x00, 2),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
-        StrLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
-        StrLenField("PartyIDPositionAccount", 0x00, 32),
-        StrLenField("PartyIDOrderOriginationFirm", 0x00, 7),
-        StrLenField("PartyIDBeneficiary", 0x00, 9),
-        StrLenField("PartyIDLocationID", 0x00, 2),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("Account", 0x00, 2),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("PartyIDPositionAccount", 0x00, 32),
+        StrFixedLenField("PartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("PartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("PartyIDLocationID", 0x00, 2),
         ByteField("CustOrderHandlingInst", 0),
-        StrLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("ComplianceText", 0x00, 20),
     ]
 
 
@@ -2386,10 +2386,10 @@ class BasketApproveBroadcast(Packet):
         ByteField("MessageEventSource", 0),
         ByteField("NoBasketRootPartyGrps", 0),
         ByteField("PartyIDEnteringFirm", 0),
-        StrLenField("PartyEnteringTrader", 0x00, 6),
-        StrLenField("BasketTradeReportText", 0x00, 20),
-        StrLenField("TradeReportID", 0x00, 20),
-        StrLenField("Pad5", "00000", 5),
+        StrFixedLenField("PartyEnteringTrader", 0x00, 6),
+        StrFixedLenField("BasketTradeReportText", 0x00, 20),
+        StrFixedLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("Pad5", "00000", 5),
         PacketListField("BasketRootPartyGrp", None, BasketRootPartyGrpComp),
         PacketListField("BasketSideAllocExtBCGrp", None, BasketSideAllocExtBCGrpComp),
     ]
@@ -2423,9 +2423,9 @@ class BasketBroadcast(Packet):
         ByteField("MessageEventSource", 0),
         ByteField("NoBasketRootPartyGrpsBC", 0),
         ByteField("NoInstrmtMatchSides", 0),
-        StrLenField("BasketTradeReportText", 0x00, 20),
-        StrLenField("TradeReportID", 0x00, 20),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("BasketTradeReportText", 0x00, 20),
+        StrFixedLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("Pad7", "0000000", 7),
         PacketListField("BasketRootPartyGrp", None, BasketRootPartyGrpComp),
         PacketListField("InstrmtMatchSideGrp", None, InstrmtMatchSideGrpComp),
         PacketListField("BasketSideAllocGrp", None, BasketSideAllocGrpComp),
@@ -2455,8 +2455,8 @@ class BasketDeleteBroadcast(Packet):
         LEShortField("TrdType", 0),
         ByteField("DeleteReason", 0),
         ByteField("MessageEventSource", 0),
-        StrLenField("TradeReportID", 0x00, 20),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("Pad4", "0000", 4),
     ]
 
 
@@ -2484,8 +2484,8 @@ class BasketExecutionBroadcast(Packet):
         ByteField("TradeReportType", 0),
         ByteField("NoInstrmtMatchSides", 0),
         ByteField("MessageEventSource", 0),
-        StrLenField("BasketSideTradeReportID", 0x00, 20),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("BasketSideTradeReportID", 0x00, 20),
+        StrFixedLenField("Pad3", "000", 3),
         PacketListField("BasketExecGrp", None, BasketExecGrpComp),
     ]
 
@@ -2506,7 +2506,7 @@ class BasketResponse(Packet):
         PacketField("MessageHeaderOut", None, MessageHeaderOutComp),
         PacketField("ResponseHeader", None, ResponseHeaderComp),
         LEIntField("BasketExecID", 0),
-        StrLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("TradeReportID", 0x00, 20),
     ]
 
 
@@ -2530,8 +2530,8 @@ class BroadcastErrorNotification(Packet):
         LEShortField("VarTextLen", 0),
         ByteField("RefApplID", 0),
         ByteField("SessionStatus", 0),
-        StrLenField("Pad4", "0000", 4),
-        StrLenField("VarText", 0, 2000),
+        StrFixedLenField("Pad4", "0000", 4),
+        StrFixedLenField("VarText", 0, 2000),
     ]
 
 
@@ -2560,7 +2560,7 @@ class CLIPDeletionNotification(Packet):
         ByteField("Side", 0),
         ByteField("OrdStatus", 0),
         ByteField("ExecType", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -2594,7 +2594,7 @@ class CLIPExecutionNotification(Packet):
         ByteField("ExecType", 0),
         ByteField("MatchType", 0),
         ByteField("NoFills", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
         PacketListField("FillsGrp", None, FillsGrpComp),
         PacketListField("InstrmntLegExecGrp", None, InstrmntLegExecGrpComp),
     ]
@@ -2620,7 +2620,7 @@ class CLIPResponse(Packet):
         LESignedIntField("MarketSegmentID", 0),
         LESignedIntField("CrossRequestID", 0),
         ByteField("NoSides", 0),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Pad7", "0000000", 7),
         PacketListField("CrossRequestAckSideGrp", None, CrossRequestAckSideGrpComp),
     ]
 
@@ -2643,7 +2643,7 @@ class CrossRequest(Packet):
         LESignedLongField("SecurityID", 0),
         LESignedLongField("OrderQty", 0),
         LESignedIntField("MarketSegmentID", 0),
-        StrLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("ComplianceText", 0x00, 20),
     ]
 
 
@@ -2738,7 +2738,7 @@ class DeleteAllOrderQuoteEventBroadcast(Packet):
         LESignedIntField("MarketSegmentID", 0),
         ByteField("MassActionReason", 0),
         ByteField("ExecInst", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -2789,7 +2789,7 @@ class DeleteAllOrderResponse(Packet):
         LELongField("MassActionReportID", 0),
         LEShortField("NoNotAffectedOrders", 0),
         LEShortField("NoAffectedOrderRequests", 0),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("Pad4", "0000", 4),
         PacketListField("NotAffectedOrdersGrp", None, NotAffectedOrdersGrpComp),
         PacketListField("AffectedOrderRequestsGrp", None, AffectedOrderRequestsGrpComp),
     ]
@@ -2819,8 +2819,8 @@ class DeleteAllQuoteBroadcast(Packet):
         LEShortField("NoNotAffectedSecurities", 0),
         ByteField("MassActionReason", 0),
         ByteField("PartyIDEnteringFirm", 0),
-        StrLenField("TargetPartyIDDeskID", 0x00, 3),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("TargetPartyIDDeskID", 0x00, 3),
+        StrFixedLenField("Pad1", "0", 1),
         PacketListField("NotAffectedSecuritiesGrp", None, NotAffectedSecuritiesGrpComp),
     ]
 
@@ -2846,7 +2846,7 @@ class DeleteAllQuoteRequest(Packet):
         LEIntField("TargetPartyIDSessionID", 0),
         ByteField("PartyIdInvestmentDecisionMakerQualifier", 0),
         ByteField("ExecutingTraderQualifier", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -2867,7 +2867,7 @@ class DeleteAllQuoteResponse(Packet):
         PacketField("NRResponseHeaderME", None, NRResponseHeaderMEComp),
         LELongField("MassActionReportID", 0),
         LEShortField("NoNotAffectedSecurities", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
         PacketListField("NotAffectedSecuritiesGrp", None, NotAffectedSecuritiesGrpComp),
     ]
 
@@ -2892,8 +2892,8 @@ class DeleteBasketTradeRequest(Packet):
         LESignedIntField("MarketSegmentID", 0),
         LEShortField("TrdType", 0),
         ByteField("TradeReportType", 0),
-        StrLenField("TradeReportID", 0x00, 20),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("Pad1", "0", 1),
     ]
 
 
@@ -2920,7 +2920,7 @@ class DeleteCLIPRequest(Packet):
         LESignedIntField("CrossRequestID", 0),
         ByteField("ExecutingTraderQualifier", 0),
         ByteField("PartyIdInvestmentDecisionMakerQualifier", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -2955,8 +2955,8 @@ class DeleteOrderBroadcast(Packet):
         ByteField("ExecType", 0),
         ByteField("ProductComplex", 0),
         ByteField("Side", 0),
-        StrLenField("FIXClOrdID", 0x00, 20),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("FIXClOrdID", 0x00, 20),
+        StrFixedLenField("Pad1", "0", 1),
     ]
 
 
@@ -2986,9 +2986,9 @@ class DeleteOrderComplexRequest(Packet):
         ByteField("OrderOrigination", 0),
         ByteField("PartyIdInvestmentDecisionMakerQualifier", 0),
         ByteField("ExecutingTraderQualifier", 0),
-        StrLenField("FIXClOrdID", 0x00, 20),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("Pad5", "00000", 5),
+        StrFixedLenField("FIXClOrdID", 0x00, 20),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("Pad5", "00000", 5),
     ]
 
 
@@ -3019,7 +3019,7 @@ class DeleteOrderNRResponse(Packet):
         LEShortField("ExecRestatementReason", 0),
         ByteField("ProductComplex", 0),
         ByteField("TransactionDelayIndicator", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -3050,7 +3050,7 @@ class DeleteOrderResponse(Packet):
         LEShortField("ExecRestatementReason", 0),
         ByteField("ProductComplex", 0),
         ByteField("TransactionDelayIndicator", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -3080,9 +3080,9 @@ class DeleteOrderSingleRequest(Packet):
         ByteField("OrderOrigination", 0),
         ByteField("PartyIdInvestmentDecisionMakerQualifier", 0),
         ByteField("ExecutingTraderQualifier", 0),
-        StrLenField("FIXClOrdID", 0x00, 20),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("FIXClOrdID", 0x00, 20),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("Pad1", "0", 1),
     ]
 
 
@@ -3108,8 +3108,8 @@ class DeleteTESTradeRequest(Packet):
         LESignedIntField("RelatedMarketSegmentID", 0),
         LEShortField("TrdType", 0),
         ByteField("TradeReportType", 0),
-        StrLenField("TradeReportID", 0x00, 20),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("Pad1", "0", 1),
     ]
 
 
@@ -3137,9 +3137,9 @@ class EnterBasketTradeRequest(Packet):
         ByteField("BasketTradeReportType", 0),
         ByteField("NoBasketRootPartyGrps", 0),
         ByteField("NoInstrmtMatchSides", 0),
-        StrLenField("BasketTradeReportText", 0x00, 20),
-        StrLenField("TradeReportID", 0x00, 20),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("BasketTradeReportText", 0x00, 20),
+        StrFixedLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("Pad4", "0000", 4),
         PacketListField("BasketRootPartyGrp", None, BasketRootPartyGrpComp),
         PacketListField("InstrmtMatchSideGrp", None, InstrmtMatchSideGrpComp),
         PacketListField("BasketSideAllocGrp", None, BasketSideAllocGrpComp),
@@ -3172,9 +3172,9 @@ class EnterCLIPRequest(Packet):
         ByteField("SideDisclosureInstruction", 0),
         ByteField("PriceDisclosureInstruction", 0),
         ByteField("OrderQtyDisclosureInstruction", 0),
-        StrLenField("RootPartyContraFirm", 0x00, 5),
-        StrLenField("RootPartyContraTrader", 0x00, 6),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("RootPartyContraFirm", 0x00, 5),
+        StrFixedLenField("RootPartyContraTrader", 0x00, 6),
+        StrFixedLenField("Pad4", "0000", 4),
         PacketListField("CrossRequestSideGrp", None, CrossRequestSideGrpComp),
         PacketListField("SideCrossLegGrp", None, SideCrossLegGrpComp),
     ]
@@ -3220,13 +3220,13 @@ class EnterTESTradeRequest(Packet):
         ByteField("PartyIDSettlementLocation", 0),
         ByteField("HedgeType", 0),
         ByteField("SwapClearer", 0),
-        StrLenField("TradeReportText", 0x00, 20),
-        StrLenField("TradeReportID", 0x00, 20),
-        StrLenField("UnderlyingSecurityID", 0x00, 12),
-        StrLenField("UnderlyingSecurityDesc", 0x00, 30),
-        StrLenField("UnderlyingCurrency", 0x00, 3),
-        StrLenField("UnderlyingIssuer", 0x00, 30),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("TradeReportText", 0x00, 20),
+        StrFixedLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("UnderlyingSecurityID", 0x00, 12),
+        StrFixedLenField("UnderlyingSecurityDesc", 0x00, 30),
+        StrFixedLenField("UnderlyingCurrency", 0x00, 3),
+        StrFixedLenField("UnderlyingIssuer", 0x00, 30),
+        StrFixedLenField("Pad4", "0000", 4),
         PacketListField("SideAllocGrp", None, SideAllocGrpComp),
         PacketListField("TrdInstrmntLegGrp", None, TrdInstrmntLegGrpComp),
         PacketListField("InstrumentEventGrp", None, InstrumentEventGrpComp),
@@ -3251,8 +3251,8 @@ class ForcedLogoutNotification(Packet):
         PacketField("MessageHeaderOut", None, MessageHeaderOutComp),
         PacketField("NotifHeader", None, NotifHeaderComp),
         LEShortField("VarTextLen", 0),
-        StrLenField("Pad6", "000000", 6),
-        StrLenField("VarText", 0, 2000),
+        StrFixedLenField("Pad6", "000000", 6),
+        StrFixedLenField("VarText", 0, 2000),
     ]
 
 
@@ -3274,8 +3274,8 @@ class ForcedUserLogoutNotification(Packet):
         LEIntField("Username", 0),
         LEShortField("VarTextLen", 0),
         ByteField("UserStatus", 0),
-        StrLenField("Pad1", "0", 1),
-        StrLenField("VarText", 0, 2000),
+        StrFixedLenField("Pad1", "0", 1),
+        StrFixedLenField("VarText", 0, 2000),
     ]
 
 
@@ -3329,7 +3329,7 @@ class InquireEnrichmentRuleIDListRequest(Packet):
     fields_desc = [
         PacketField("MessageHeaderIn", None, MessageHeaderInComp),
         PacketField("RequestHeader", None, RequestHeaderComp),
-        StrLenField("LastEntityProcessed", 0x00000000000000000000000000000000, 16),
+        StrFixedLenField("LastEntityProcessed", 0x00000000000000000000000000000000, 16),
     ]
 
 
@@ -3348,9 +3348,9 @@ class InquireEnrichmentRuleIDListResponse(Packet):
     fields_desc = [
         PacketField("MessageHeaderOut", None, MessageHeaderOutComp),
         PacketField("ResponseHeader", None, ResponseHeaderComp),
-        StrLenField("LastEntityProcessed", 0x00000000000000000000000000000000, 16),
+        StrFixedLenField("LastEntityProcessed", 0x00000000000000000000000000000000, 16),
         LEShortField("NoEnrichmentRules", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
         PacketListField("EnrichmentRulesGrp", None, EnrichmentRulesGrpComp),
     ]
 
@@ -3393,7 +3393,7 @@ class InquireMMParameterResponse(Packet):
         LELongField("MMParameterReportID", 0),
         LESignedIntField("MarketSegmentID", 0),
         ByteField("NoMMParameters", 0),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("Pad3", "000", 3),
         PacketListField("MMParameterGrp", None, MMParameterGrpComp),
     ]
 
@@ -3415,9 +3415,9 @@ class InquirePreTradeRiskLimitsRequest(Packet):
         PacketField("RequestHeader", None, RequestHeaderComp),
         LESignedIntField("MarketSegmentID", 0),
         ByteField("RiskLimitPlatform", 0),
-        StrLenField("PartyExecutingUnit", 0x00, 5),
-        StrLenField("RiskLimitGroup", 0x00, 3),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("PartyExecutingUnit", 0x00, 5),
+        StrFixedLenField("RiskLimitGroup", 0x00, 3),
+        StrFixedLenField("Pad3", "000", 3),
     ]
 
 
@@ -3455,7 +3455,7 @@ class InquireSessionListResponse(Packet):
         PacketField("MessageHeaderOut", None, MessageHeaderOutComp),
         PacketField("ResponseHeader", None, ResponseHeaderComp),
         LEShortField("NoSessions", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
         PacketListField("SessionsGrp", None, SessionsGrpComp),
     ]
 
@@ -3475,7 +3475,7 @@ class InquireUserRequest(Packet):
     fields_desc = [
         PacketField("MessageHeaderIn", None, MessageHeaderInComp),
         PacketField("RequestHeader", None, RequestHeaderComp),
-        StrLenField("LastEntityProcessed", 0x00000000000000000000000000000000, 16),
+        StrFixedLenField("LastEntityProcessed", 0x00000000000000000000000000000000, 16),
     ]
 
 
@@ -3494,9 +3494,9 @@ class InquireUserResponse(Packet):
     fields_desc = [
         PacketField("MessageHeaderOut", None, MessageHeaderOutComp),
         PacketField("ResponseHeader", None, ResponseHeaderComp),
-        StrLenField("LastEntityProcessed", 0x00000000000000000000000000000000, 16),
+        StrFixedLenField("LastEntityProcessed", 0x00000000000000000000000000000000, 16),
         LEShortField("NoPartyDetails", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
         PacketListField("PartyDetailsGrp", None, PartyDetailsGrpComp),
     ]
 
@@ -3519,8 +3519,8 @@ class LegalNotificationBroadcast(Packet):
         LELongField("TransactTime", 0),
         LEShortField("VarTextLen", 0),
         ByteField("UserStatus", 0),
-        StrLenField("Pad5", "00000", 5),
-        StrLenField("VarText", 0, 2000),
+        StrFixedLenField("Pad5", "00000", 5),
+        StrFixedLenField("VarText", 0, 2000),
     ]
 
 
@@ -3541,18 +3541,18 @@ class LogonRequest(Packet):
         PacketField("RequestHeader", None, RequestHeaderComp),
         LEIntField("HeartBtInt", 0),
         LEIntField("PartyIDSessionID", 0),
-        StrLenField("DefaultCstmApplVerID", 0x00, 30),
-        StrLenField("Password", 0x00, 32),
+        StrFixedLenField("DefaultCstmApplVerID", 0x00, 30),
+        StrFixedLenField("Password", 0x00, 32),
         ByteField("ApplUsageOrders", 0),
         ByteField("ApplUsageQuotes", 0),
         ByteField("OrderRoutingIndicator", 0),
-        StrLenField("FIXEngineName", 0x00, 30),
-        StrLenField("FIXEngineVersion", 0x00, 30),
-        StrLenField("FIXEngineVendor", 0x00, 30),
-        StrLenField("ApplicationSystemName", 0x00, 30),
-        StrLenField("ApplicationSystemVersion", 0x00, 30),
-        StrLenField("ApplicationSystemVendor", 0x00, 30),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("FIXEngineName", 0x00, 30),
+        StrFixedLenField("FIXEngineVersion", 0x00, 30),
+        StrFixedLenField("FIXEngineVendor", 0x00, 30),
+        StrFixedLenField("ApplicationSystemName", 0x00, 30),
+        StrFixedLenField("ApplicationSystemVersion", 0x00, 30),
+        StrFixedLenField("ApplicationSystemVendor", 0x00, 30),
+        StrFixedLenField("Pad3", "000", 3),
     ]
 
 
@@ -3578,9 +3578,9 @@ class LogonResponse(Packet):
         LEIntField("SessionInstanceID", 0),
         LEShortField("MarketID", 0),
         ByteField("TradSesMode", 0),
-        StrLenField("DefaultCstmApplVerID", 0x00, 30),
-        StrLenField("DefaultCstmApplVerSubID", 0x00, 5),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("DefaultCstmApplVerID", 0x00, 30),
+        StrFixedLenField("DefaultCstmApplVerSubID", 0x00, 5),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -3642,7 +3642,7 @@ class MMParameterDefinitionRequest(Packet):
         LESignedIntField("MarketSegmentID", 0),
         LEIntField("TargetPartyIDSessionID", 0),
         LESignedIntField("PctCount", 0),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("Pad4", "0000", 4),
     ]
 
 
@@ -3694,7 +3694,7 @@ class MassQuoteRequest(Packet):
         ByteField("NoQuoteEntries", 0),
         ByteField("PartyIdInvestmentDecisionMakerQualifier", 0),
         ByteField("ExecutingTraderQualifier", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
         PacketListField("QuoteEntryGrp", None, QuoteEntryGrpComp),
     ]
 
@@ -3718,7 +3718,7 @@ class MassQuoteResponse(Packet):
         LELongField("QuoteResponseID", 0),
         LESignedIntField("MarketSegmentID", 0),
         ByteField("NoQuoteSideEntries", 0),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("Pad3", "000", 3),
         PacketListField("QuoteEntryAckGrp", None, QuoteEntryAckGrpComp),
     ]
 
@@ -3748,9 +3748,9 @@ class ModifyBasketTradeRequest(Packet):
         ByteField("TradeReportType", 0),
         ByteField("NoBasketRootPartyGrps", 0),
         ByteField("NoInstrmtMatchSides", 0),
-        StrLenField("BasketTradeReportText", 0x00, 20),
-        StrLenField("TradeReportID", 0x00, 20),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("BasketTradeReportText", 0x00, 20),
+        StrFixedLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("Pad1", "0", 1),
         PacketListField("BasketRootPartyGrp", None, BasketRootPartyGrpComp),
         PacketListField("InstrmtMatchSideGrp", None, InstrmtMatchSideGrpComp),
         PacketListField("BasketSideAllocGrp", None, BasketSideAllocGrpComp),
@@ -3785,9 +3785,9 @@ class ModifyOrderComplexRequest(Packet):
         LEIntField("ExpireDate", 0),
         LEIntField("MatchInstCrossID", 0),
         LEIntField("TargetPartyIDSessionID", 0),
-        StrLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
-        StrLenField("PartyIDOrderOriginationFirm", 0x00, 7),
-        StrLenField("PartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("PartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("PartyIDBeneficiary", 0x00, 9),
         ByteField("ApplSeqIndicator", 0),
         ByteField("ProductComplex", 0),
         ByteField("Side", 0),
@@ -3802,16 +3802,16 @@ class ModifyOrderComplexRequest(Packet):
         ByteField("OrderOrigination", 0),
         ByteField("PartyIdInvestmentDecisionMakerQualifier", 0),
         ByteField("ExecutingTraderQualifier", 0),
-        StrLenField("PartyIDLocationID", 0x00, 2),
+        StrFixedLenField("PartyIDLocationID", 0x00, 2),
         ByteField("CustOrderHandlingInst", 0),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("PartyIDPositionAccount", 0x00, 32),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
-        StrLenField("FIXClOrdID", 0x00, 20),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("PartyIDPositionAccount", 0x00, 32),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("FIXClOrdID", 0x00, 20),
         ByteField("NoLegs", 0),
-        StrLenField("Pad5", "00000", 5),
+        StrFixedLenField("Pad5", "00000", 5),
         PacketListField("LegOrdGrp", None, LegOrdGrpComp),
     ]
 
@@ -3854,8 +3854,8 @@ class ModifyOrderComplexShortRequest(Packet):
         ByteField("OrderOrigination", 0),
         ByteField("PartyIdInvestmentDecisionMakerQualifier", 0),
         ByteField("ExecutingTraderQualifier", 0),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -3890,7 +3890,7 @@ class ModifyOrderNRResponse(Packet):
         ByteField("Triggered", 0),
         ByteField("TransactionDelayIndicator", 0),
         ByteField("NoOrderEvents", 0),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Pad7", "0000000", 7),
         PacketListField("OrderEventGrp", None, OrderEventGrpComp),
     ]
 
@@ -3927,7 +3927,7 @@ class ModifyOrderResponse(Packet):
         ByteField("Triggered", 0),
         ByteField("TransactionDelayIndicator", 0),
         ByteField("NoOrderEvents", 0),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Pad7", "0000000", 7),
         PacketListField("OrderEventGrp", None, OrderEventGrpComp),
     ]
 
@@ -3961,9 +3961,9 @@ class ModifyOrderSingleRequest(Packet):
         LEIntField("SimpleSecurityID", 0),
         LEIntField("MatchInstCrossID", 0),
         LEIntField("TargetPartyIDSessionID", 0),
-        StrLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
-        StrLenField("PartyIDOrderOriginationFirm", 0x00, 7),
-        StrLenField("PartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("PartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("PartyIDBeneficiary", 0x00, 9),
         ByteField("ApplSeqIndicator", 0),
         ByteField("Side", 0),
         ByteField("OrdType", 0),
@@ -3977,18 +3977,18 @@ class ModifyOrderSingleRequest(Packet):
         ByteField("OrderOrigination", 0),
         ByteField("PartyIdInvestmentDecisionMakerQualifier", 0),
         ByteField("ExecutingTraderQualifier", 0),
-        StrLenField("Account", 0x00, 2),
-        StrLenField("PartyIDPositionAccount", 0x00, 32),
+        StrFixedLenField("Account", 0x00, 2),
+        StrFixedLenField("PartyIDPositionAccount", 0x00, 32),
         ByteField("PositionEffect", 0),
         ByteField("OwnershipIndicator", 0),
-        StrLenField("PartyIDLocationID", 0x00, 2),
+        StrFixedLenField("PartyIDLocationID", 0x00, 2),
         ByteField("CustOrderHandlingInst", 0),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
-        StrLenField("FIXClOrdID", 0x00, 20),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("FIXClOrdID", 0x00, 20),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -4028,8 +4028,8 @@ class ModifyOrderSingleShortRequest(Packet):
         ByteField("OrderOrigination", 0),
         ByteField("PartyIdInvestmentDecisionMakerQualifier", 0),
         ByteField("ExecutingTraderQualifier", 0),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -4062,9 +4062,9 @@ class ModifyTESTradeRequest(Packet):
         ByteField("NoSideAllocs", 0),
         ByteField("NoLegs", 0),
         ByteField("SwapClearer", 0),
-        StrLenField("TradeReportText", 0x00, 20),
-        StrLenField("TradeReportID", 0x00, 20),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("TradeReportText", 0x00, 20),
+        StrFixedLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("Pad1", "0", 1),
         PacketListField("SideAllocGrp", None, SideAllocGrpComp),
         PacketListField("TrdInstrmntLegGrp", None, TrdInstrmntLegGrpComp),
     ]
@@ -4095,9 +4095,9 @@ class NewOrderComplexRequest(Packet):
         LESignedIntField("MarketSegmentID", 0),
         LEIntField("ExpireDate", 0),
         LEIntField("MatchInstCrossID", 0),
-        StrLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
-        StrLenField("PartyIDOrderOriginationFirm", 0x00, 7),
-        StrLenField("PartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("PartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("PartyIDBeneficiary", 0x00, 9),
         ByteField("ApplSeqIndicator", 0),
         ByteField("ProductComplex", 0),
         ByteField("Side", 0),
@@ -4112,16 +4112,16 @@ class NewOrderComplexRequest(Packet):
         ByteField("OrderOrigination", 0),
         ByteField("PartyIdInvestmentDecisionMakerQualifier", 0),
         ByteField("ExecutingTraderQualifier", 0),
-        StrLenField("PartyIDLocationID", 0x00, 2),
-        StrLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("PartyIDLocationID", 0x00, 2),
+        StrFixedLenField("ComplianceText", 0x00, 20),
         ByteField("CustOrderHandlingInst", 0),
-        StrLenField("PartyIDPositionAccount", 0x00, 32),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
-        StrLenField("FIXClOrdID", 0x00, 20),
+        StrFixedLenField("PartyIDPositionAccount", 0x00, 32),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("FIXClOrdID", 0x00, 20),
         ByteField("NoLegs", 0),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("Pad1", "0", 1),
         PacketListField("LegOrdGrp", None, LegOrdGrpComp),
     ]
 
@@ -4163,8 +4163,8 @@ class NewOrderComplexShortRequest(Packet):
         ByteField("OrderOrigination", 0),
         ByteField("PartyIdInvestmentDecisionMakerQualifier", 0),
         ByteField("ExecutingTraderQualifier", 0),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -4197,7 +4197,7 @@ class NewOrderNRResponse(Packet):
         ByteField("Triggered", 0),
         ByteField("TransactionDelayIndicator", 0),
         ByteField("NoOrderEvents", 0),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Pad7", "0000000", 7),
         PacketListField("OrderEventGrp", None, OrderEventGrpComp),
     ]
 
@@ -4233,7 +4233,7 @@ class NewOrderResponse(Packet):
         ByteField("Triggered", 0),
         ByteField("TransactionDelayIndicator", 0),
         ByteField("NoOrderEvents", 0),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Pad7", "0000000", 7),
         PacketListField("OrderEventGrp", None, OrderEventGrpComp),
     ]
 
@@ -4264,9 +4264,9 @@ class NewOrderSingleRequest(Packet):
         LESignedIntField("MarketSegmentID", 0),
         LEIntField("SimpleSecurityID", 0),
         LEIntField("MatchInstCrossID", 0),
-        StrLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
-        StrLenField("PartyIDOrderOriginationFirm", 0x00, 7),
-        StrLenField("PartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("PartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("PartyIDBeneficiary", 0x00, 9),
         ByteField("ApplSeqIndicator", 0),
         ByteField("Side", 0),
         ByteField("OrdType", 0),
@@ -4281,17 +4281,17 @@ class NewOrderSingleRequest(Packet):
         ByteField("OrderOrigination", 0),
         ByteField("PartyIdInvestmentDecisionMakerQualifier", 0),
         ByteField("ExecutingTraderQualifier", 0),
-        StrLenField("Account", 0x00, 2),
-        StrLenField("PartyIDPositionAccount", 0x00, 32),
+        StrFixedLenField("Account", 0x00, 2),
+        StrFixedLenField("PartyIDPositionAccount", 0x00, 32),
         ByteField("PositionEffect", 0),
-        StrLenField("PartyIDLocationID", 0x00, 2),
+        StrFixedLenField("PartyIDLocationID", 0x00, 2),
         ByteField("CustOrderHandlingInst", 0),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
-        StrLenField("FIXClOrdID", 0x00, 20),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("FIXClOrdID", 0x00, 20),
+        StrFixedLenField("Pad3", "000", 3),
     ]
 
 
@@ -4330,8 +4330,8 @@ class NewOrderSingleShortRequest(Packet):
         ByteField("OrderOrigination", 0),
         ByteField("PartyIdInvestmentDecisionMakerQualifier", 0),
         ByteField("ExecutingTraderQualifier", 0),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -4352,9 +4352,9 @@ class NewsBroadcast(Packet):
         PacketField("RBCHeader", None, RBCHeaderComp),
         LELongField("OrigTime", 0),
         LEShortField("VarTextLen", 0),
-        StrLenField("Headline", 0x00, 256),
-        StrLenField("Pad6", "000000", 6),
-        StrLenField("VarText", 0, 2000),
+        StrFixedLenField("Headline", 0x00, 256),
+        StrFixedLenField("Pad6", "000000", 6),
+        StrFixedLenField("VarText", 0, 2000),
     ]
 
 
@@ -4390,10 +4390,10 @@ class OrderExecNotification(Packet):
         ByteField("ExecType", 0),
         ByteField("Triggered", 0),
         ByteField("CrossedIndicator", 0),
-        StrLenField("FIXClOrdID", 0x00, 20),
+        StrFixedLenField("FIXClOrdID", 0x00, 20),
         ByteField("NoFills", 0),
         ByteField("NoOrderEvents", 0),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("Pad4", "0000", 4),
         PacketListField("FillsGrp", None, FillsGrpComp),
         PacketListField("InstrmntLegExecGrp", None, InstrmntLegExecGrpComp),
         PacketListField("OrderEventGrp", None, OrderEventGrpComp),
@@ -4448,25 +4448,25 @@ class OrderExecReportBroadcast(Packet):
         ByteField("ExecInst", 0),
         ByteField("TradingSessionSubID", 0),
         ByteField("ApplSeqIndicator", 0),
-        StrLenField("Account", 0x00, 2),
-        StrLenField("PartyIDPositionAccount", 0x00, 32),
+        StrFixedLenField("Account", 0x00, 2),
+        StrFixedLenField("PartyIDPositionAccount", 0x00, 32),
         ByteField("PositionEffect", 0),
-        StrLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
-        StrLenField("PartyIDOrderOriginationFirm", 0x00, 7),
-        StrLenField("PartyIDBeneficiary", 0x00, 9),
-        StrLenField("PartyIDLocationID", 0x00, 2),
+        StrFixedLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("PartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("PartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("PartyIDLocationID", 0x00, 2),
         ByteField("CustOrderHandlingInst", 0),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
-        StrLenField("FIXClOrdID", 0x00, 20),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("FIXClOrdID", 0x00, 20),
         ByteField("NoFills", 0),
         ByteField("NoLegs", 0),
         ByteField("NoOrderEvents", 0),
         ByteField("Triggered", 0),
         ByteField("CrossedIndicator", 0),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("Pad1", "0", 1),
         PacketListField("LegOrdGrp", None, LegOrdGrpComp),
         PacketListField("FillsGrp", None, FillsGrpComp),
         PacketListField("InstrmntLegExecGrp", None, InstrmntLegExecGrpComp),
@@ -4511,7 +4511,7 @@ class OrderExecResponse(Packet):
         ByteField("TransactionDelayIndicator", 0),
         ByteField("NoFills", 0),
         ByteField("NoOrderEvents", 0),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Pad7", "0000000", 7),
         PacketListField("FillsGrp", None, FillsGrpComp),
         PacketListField("InstrmntLegExecGrp", None, InstrmntLegExecGrpComp),
         PacketListField("OrderEventGrp", None, OrderEventGrpComp),
@@ -4566,10 +4566,10 @@ class PartyEntitlementsUpdateReport(Packet):
         LEIntField("RequestingPartyIDExecutingSystem", 0),
         LEShortField("MarketID", 0),
         ByteField("ListUpdateAction", 0),
-        StrLenField("RequestingPartyEnteringFirm", 0x00, 9),
-        StrLenField("RequestingPartyClearingFirm", 0x00, 9),
+        StrFixedLenField("RequestingPartyEnteringFirm", 0x00, 9),
+        StrFixedLenField("RequestingPartyClearingFirm", 0x00, 9),
         ByteField("PartyDetailStatus", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -4589,7 +4589,7 @@ class PingRequest(Packet):
         PacketField("MessageHeaderIn", None, MessageHeaderInComp),
         PacketField("RequestHeader", None, RequestHeaderComp),
         LEShortField("PartitionID", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -4632,8 +4632,8 @@ class PreTradeRiskLimitResponse(Packet):
         ByteField("NoRiskLimits", 0),
         ByteField("PartyDetailStatus", 0),
         ByteField("RiskLimitPlatform", 0),
-        StrLenField("PartyDetailExecutingUnit", 0x00, 5),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("PartyDetailExecutingUnit", 0x00, 5),
+        StrFixedLenField("Pad4", "0000", 4),
         PacketListField("RiskLimitsRptGrp", None, RiskLimitsRptGrpComp),
     ]
 
@@ -4658,9 +4658,9 @@ class PreTradeRiskLimitsDefinitionRequest(Packet):
         ByteField("RiskLimitPlatform", 0),
         ByteField("NoRiskLimitsQty", 0),
         ByteField("PartyDetailStatus", 0),
-        StrLenField("RiskLimitGroup", 0x00, 3),
-        StrLenField("PartyDetailExecutingUnit", 0x00, 5),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("RiskLimitGroup", 0x00, 3),
+        StrFixedLenField("PartyDetailExecutingUnit", 0x00, 5),
+        StrFixedLenField("Pad1", "0", 1),
         PacketListField("RiskLimitQtyGrp", None, RiskLimitQtyGrpComp),
     ]
 
@@ -4688,7 +4688,7 @@ class QuoteActivationNotification(Packet):
         ByteField("MassActionType", 0),
         ByteField("MassActionSubType", 0),
         ByteField("MassActionReason", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
         PacketListField("NotAffectedSecuritiesGrp", None, NotAffectedSecuritiesGrpComp),
     ]
 
@@ -4716,7 +4716,7 @@ class QuoteActivationRequest(Packet):
         ByteField("MassActionSubType", 0),
         ByteField("PartyIdInvestmentDecisionMakerQualifier", 0),
         ByteField("ExecutingTraderQualifier", 0),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("Pad4", "0000", 4),
     ]
 
 
@@ -4737,7 +4737,7 @@ class QuoteActivationResponse(Packet):
         PacketField("NRResponseHeaderME", None, NRResponseHeaderMEComp),
         LELongField("MassActionReportID", 0),
         LEShortField("NoNotAffectedSecurities", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
         PacketListField("NotAffectedSecuritiesGrp", None, NotAffectedSecuritiesGrpComp),
     ]
 
@@ -4761,7 +4761,7 @@ class QuoteExecutionReport(Packet):
         LESignedIntField("MarketSegmentID", 0),
         LEShortField("NoLegExecs", 0),
         ByteField("NoQuoteEvents", 0),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("Pad1", "0", 1),
         PacketListField("QuoteEventGrp", None, QuoteEventGrpComp),
         PacketListField("QuoteLegExecGrp", None, QuoteLegExecGrpComp),
     ]
@@ -4786,8 +4786,8 @@ class RFQRequest(Packet):
         LESignedLongField("OrderQty", 0),
         LESignedIntField("MarketSegmentID", 0),
         ByteField("Side", 0),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -4828,8 +4828,8 @@ class Reject(Packet):
         LEIntField("SessionRejectReason", 0),
         LEShortField("VarTextLen", 0),
         ByteField("SessionStatus", 0),
-        StrLenField("Pad1", "0", 1),
-        StrLenField("VarText", 0, 2000),
+        StrFixedLenField("Pad1", "0", 1),
+        StrFixedLenField("VarText", 0, 2000),
     ]
 
 
@@ -4851,9 +4851,9 @@ class RetransmitMEMessageRequest(Packet):
         LEIntField("SubscriptionScope", 0),
         LEShortField("PartitionID", 0),
         ByteField("RefApplID", 0),
-        StrLenField("ApplBegMsgID", 0x00000000000000000000000000000000, 16),
-        StrLenField("ApplEndMsgID", 0x00000000000000000000000000000000, 16),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("ApplBegMsgID", 0x00000000000000000000000000000000, 16),
+        StrFixedLenField("ApplEndMsgID", 0x00000000000000000000000000000000, 16),
+        StrFixedLenField("Pad1", "0", 1),
     ]
 
 
@@ -4873,9 +4873,9 @@ class RetransmitMEMessageResponse(Packet):
         PacketField("MessageHeaderOut", None, MessageHeaderOutComp),
         PacketField("ResponseHeader", None, ResponseHeaderComp),
         LEShortField("ApplTotalMessageCount", 0),
-        StrLenField("ApplEndMsgID", 0x00000000000000000000000000000000, 16),
-        StrLenField("RefApplLastMsgID", 0x00000000000000000000000000000000, 16),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("ApplEndMsgID", 0x00000000000000000000000000000000, 16),
+        StrFixedLenField("RefApplLastMsgID", 0x00000000000000000000000000000000, 16),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -4898,7 +4898,7 @@ class RetransmitRequest(Packet):
         LELongField("ApplEndSeqNum", 0),
         LEShortField("PartitionID", 0),
         ByteField("RefApplID", 0),
-        StrLenField("Pad5", "00000", 5),
+        StrFixedLenField("Pad5", "00000", 5),
     ]
 
 
@@ -4920,7 +4920,7 @@ class RetransmitResponse(Packet):
         LELongField("ApplEndSeqNum", 0),
         LELongField("RefApplLastSeqNum", 0),
         LEShortField("ApplTotalMessageCount", 0),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -4944,9 +4944,9 @@ class ReverseTESTradeRequest(Packet):
         LEIntField("TESExecID", 0),
         LESignedIntField("RelatedMarketSegmentID", 0),
         LEShortField("TrdType", 0),
-        StrLenField("TradeReportID", 0x00, 20),
-        StrLenField("ReversalReasonText", 0x00, 132),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("ReversalReasonText", 0x00, 132),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -4972,9 +4972,9 @@ class RiskNotificationBroadcast(Packet):
         LEShortField("MarketID", 0),
         ByteField("ListUpdateAction", 0),
         ByteField("RiskLimitAction", 0),
-        StrLenField("RequestingPartyEnteringFirm", 0x00, 9),
-        StrLenField("RequestingPartyClearingFirm", 0x00, 9),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("RequestingPartyEnteringFirm", 0x00, 9),
+        StrFixedLenField("RequestingPartyClearingFirm", 0x00, 9),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -5015,25 +5015,25 @@ class SRQSCreateDealNotification(Packet):
         ByteField("TradePublishIndicator", 0),
         ByteField("HedgingInstruction", 0),
         ByteField("NoSRQSTargetPartyTrdGrps", 0),
-        StrLenField("RootPartyExecutingFirm", 0x00, 5),
-        StrLenField("RootPartyExecutingTrader", 0x00, 6),
-        StrLenField("RootPartyEnteringTrader", 0x00, 6),
-        StrLenField("FirmTradeID", 0x00, 20),
-        StrLenField("FirmNegotiationID", 0x00, 20),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
-        StrLenField("FreeText5", 0x00, 132),
+        StrFixedLenField("RootPartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("RootPartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("RootPartyEnteringTrader", 0x00, 6),
+        StrFixedLenField("FirmTradeID", 0x00, 20),
+        StrFixedLenField("FirmNegotiationID", 0x00, 20),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("FreeText5", 0x00, 132),
         ByteField("PositionEffect", 0),
-        StrLenField("Account", 0x00, 2),
-        StrLenField("PartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("Account", 0x00, 2),
+        StrFixedLenField("PartyIDBeneficiary", 0x00, 9),
         ByteField("CustOrderHandlingInst", 0),
-        StrLenField("PartyIDOrderOriginationFirm", 0x00, 7),
-        StrLenField("PartyIDPositionAccount", 0x00, 32),
-        StrLenField("PartyIDLocationID", 0x00, 2),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("PartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("PartyIDPositionAccount", 0x00, 32),
+        StrFixedLenField("PartyIDLocationID", 0x00, 2),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("Pad3", "000", 3),
         PacketListField("OrderBookItemGrp", None, OrderBookItemGrpComp),
         PacketListField("SRQSTargetPartyTrdGrp", None, SRQSTargetPartyTrdGrpComp),
     ]
@@ -5067,25 +5067,25 @@ class SRQSDealNotification(Packet):
         ByteField("MessageEventSource", 0),
         ByteField("TradingCapacity", 0),
         ByteField("NoSRQSTargetPartyTrdGrps", 0),
-        StrLenField("RootPartyExecutingFirm", 0x00, 5),
-        StrLenField("RootPartyExecutingTrader", 0x00, 6),
-        StrLenField("RootPartyEnteringTrader", 0x00, 6),
-        StrLenField("FirmTradeID", 0x00, 20),
-        StrLenField("FirmNegotiationID", 0x00, 20),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
-        StrLenField("FreeText5", 0x00, 132),
+        StrFixedLenField("RootPartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("RootPartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("RootPartyEnteringTrader", 0x00, 6),
+        StrFixedLenField("FirmTradeID", 0x00, 20),
+        StrFixedLenField("FirmNegotiationID", 0x00, 20),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("FreeText5", 0x00, 132),
         ByteField("PositionEffect", 0),
-        StrLenField("Account", 0x00, 2),
-        StrLenField("PartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("Account", 0x00, 2),
+        StrFixedLenField("PartyIDBeneficiary", 0x00, 9),
         ByteField("CustOrderHandlingInst", 0),
-        StrLenField("PartyIDOrderOriginationFirm", 0x00, 7),
-        StrLenField("PartyIDPositionAccount", 0x00, 32),
-        StrLenField("PartyIDLocationID", 0x00, 2),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("PartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("PartyIDPositionAccount", 0x00, 32),
+        StrFixedLenField("PartyIDLocationID", 0x00, 2),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("Pad1", "0", 1),
         PacketListField("SRQSTargetPartyTrdGrp", None, SRQSTargetPartyTrdGrpComp),
     ]
 
@@ -5110,9 +5110,9 @@ class SRQSDealResponse(Packet):
         LEIntField("TradeID", 0),
         LEIntField("SecondaryTradeID", 0),
         ByteField("NoSRQSQuoteGrps", 0),
-        StrLenField("FirmTradeID", 0x00, 20),
-        StrLenField("FirmNegotiationID", 0x00, 20),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("FirmTradeID", 0x00, 20),
+        StrFixedLenField("FirmNegotiationID", 0x00, 20),
+        StrFixedLenField("Pad3", "000", 3),
         PacketListField("SRQSQuoteGrp", None, SRQSQuoteGrpComp),
     ]
 
@@ -5148,22 +5148,22 @@ class SRQSEnterQuoteRequest(Packet):
         ByteField("ExecutingTraderQualifier", 0),
         ByteField("PartyIdInvestmentDecisionMakerQualifier", 0),
         ByteField("TradingCapacity", 0),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
-        StrLenField("FreeText5", 0x00, 132),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("FreeText5", 0x00, 132),
         ByteField("PositionEffect", 0),
-        StrLenField("Account", 0x00, 2),
-        StrLenField("PartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("Account", 0x00, 2),
+        StrFixedLenField("PartyIDBeneficiary", 0x00, 9),
         ByteField("CustOrderHandlingInst", 0),
-        StrLenField("PartyIDOrderOriginationFirm", 0x00, 7),
-        StrLenField("PartyIDPositionAccount", 0x00, 32),
-        StrLenField("PartyIDLocationID", 0x00, 2),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("PartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("PartyIDPositionAccount", 0x00, 32),
+        StrFixedLenField("PartyIDLocationID", 0x00, 2),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -5198,23 +5198,23 @@ class SRQSHitQuoteRequest(Packet):
         ByteField("OrderOrigination", 0),
         ByteField("HedgingInstruction", 0),
         ByteField("NoSRQSQuoteGrps", 0),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
-        StrLenField("FirmTradeID", 0x00, 20),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
-        StrLenField("FreeText5", 0x00, 132),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("FirmTradeID", 0x00, 20),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("FreeText5", 0x00, 132),
         ByteField("PositionEffect", 0),
-        StrLenField("Account", 0x00, 2),
-        StrLenField("PartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("Account", 0x00, 2),
+        StrFixedLenField("PartyIDBeneficiary", 0x00, 9),
         ByteField("CustOrderHandlingInst", 0),
-        StrLenField("PartyIDOrderOriginationFirm", 0x00, 7),
-        StrLenField("PartyIDPositionAccount", 0x00, 32),
-        StrLenField("PartyIDLocationID", 0x00, 2),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("PartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("PartyIDPositionAccount", 0x00, 32),
+        StrFixedLenField("PartyIDLocationID", 0x00, 2),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("Pad2", "00", 2),
         PacketListField("SRQSHitQuoteGrp", None, SRQSHitQuoteGrpComp),
     ]
 
@@ -5259,7 +5259,7 @@ class SRQSInquireSmartRespondentResponse(Packet):
         PacketField("ResponseHeader", None, ResponseHeaderComp),
         LESignedIntField("MarketSegmentID", 0),
         LEShortField("NoPartyDetails", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
         PacketListField("SmartPartyDetailGrp", None, SmartPartyDetailGrpComp),
     ]
 
@@ -5299,14 +5299,14 @@ class SRQSNegotiationNotification(Packet):
         ByteField("Side", 0),
         ByteField("TradeAggregationTransType", 0),
         ByteField("QuoteCondition", 0),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
-        StrLenField("PartyEnteringTrader", 0x00, 6),
-        StrLenField("TargetPartyExecutingFirm", 0x00, 5),
-        StrLenField("TargetPartyExecutingTrader", 0x00, 6),
-        StrLenField("FirmNegotiationID", 0x00, 20),
-        StrLenField("FreeText5", 0x00, 132),
-        StrLenField("PartyOrderOriginationTrader", 0x00, 132),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("PartyEnteringTrader", 0x00, 6),
+        StrFixedLenField("TargetPartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("TargetPartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("FirmNegotiationID", 0x00, 20),
+        StrFixedLenField("FreeText5", 0x00, 132),
+        StrFixedLenField("PartyOrderOriginationTrader", 0x00, 132),
     ]
 
 
@@ -5348,13 +5348,13 @@ class SRQSNegotiationRequesterNotification(Packet):
         ByteField("ShowLastDealOnClosure", 0),
         ByteField("TradeAggregationTransType", 0),
         ByteField("QuoteCondition", 0),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
-        StrLenField("PartyEnteringTrader", 0x00, 6),
-        StrLenField("FirmNegotiationID", 0x00, 20),
-        StrLenField("FreeText5", 0x00, 132),
-        StrLenField("PartyOrderOriginationTrader", 0x00, 132),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("PartyEnteringTrader", 0x00, 6),
+        StrFixedLenField("FirmNegotiationID", 0x00, 20),
+        StrFixedLenField("FreeText5", 0x00, 132),
+        StrFixedLenField("PartyOrderOriginationTrader", 0x00, 132),
+        StrFixedLenField("Pad3", "000", 3),
         PacketListField("TargetParties", None, TargetPartiesComp),
     ]
 
@@ -5378,8 +5378,8 @@ class SRQSNegotiationStatusNotification(Packet):
         LELongField("EffectiveTime", 0),
         LEIntField("NegotiationID", 0),
         ByteField("QuoteCondition", 0),
-        StrLenField("FirmNegotiationID", 0x00, 20),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("FirmNegotiationID", 0x00, 20),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -5424,15 +5424,15 @@ class SRQSOpenNegotiationNotification(Packet):
         ByteField("RespondentType", 0),
         ByteField("TradeAggregationTransType", 0),
         ByteField("QuoteCondition", 0),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
-        StrLenField("PartyEnteringTrader", 0x00, 6),
-        StrLenField("TargetPartyExecutingFirm", 0x00, 5),
-        StrLenField("TargetPartyExecutingTrader", 0x00, 6),
-        StrLenField("FirmNegotiationID", 0x00, 20),
-        StrLenField("FreeText5", 0x00, 132),
-        StrLenField("PartyOrderOriginationTrader", 0x00, 132),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("PartyEnteringTrader", 0x00, 6),
+        StrFixedLenField("TargetPartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("TargetPartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("FirmNegotiationID", 0x00, 20),
+        StrFixedLenField("FreeText5", 0x00, 132),
+        StrFixedLenField("PartyOrderOriginationTrader", 0x00, 132),
+        StrFixedLenField("Pad6", "000000", 6),
         PacketListField("QuotReqLegsGrp", None, QuotReqLegsGrpComp),
     ]
 
@@ -5476,12 +5476,12 @@ class SRQSOpenNegotiationRequest(Packet):
         ByteField("OrderQtyIsLocked", 0),
         ByteField("TradeAggregationTransType", 0),
         ByteField("QuoteCondition", 0),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
-        StrLenField("FreeText5", 0x00, 132),
-        StrLenField("QuoteReqID", 0x00, 20),
-        StrLenField("PartyOrderOriginationTrader", 0x00, 132),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("FreeText5", 0x00, 132),
+        StrFixedLenField("QuoteReqID", 0x00, 20),
+        StrFixedLenField("PartyOrderOriginationTrader", 0x00, 132),
+        StrFixedLenField("Pad2", "00", 2),
         PacketListField("QuotReqLegsGrp", None, QuotReqLegsGrpComp),
         PacketListField("TargetParties", None, TargetPartiesComp),
     ]
@@ -5532,13 +5532,13 @@ class SRQSOpenNegotiationRequesterNotification(Packet):
         ByteField("OrderQtyIsLocked", 0),
         ByteField("TradeAggregationTransType", 0),
         ByteField("QuoteCondition", 0),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
-        StrLenField("PartyEnteringTrader", 0x00, 6),
-        StrLenField("FirmNegotiationID", 0x00, 20),
-        StrLenField("FreeText5", 0x00, 132),
-        StrLenField("PartyOrderOriginationTrader", 0x00, 132),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("PartyEnteringTrader", 0x00, 6),
+        StrFixedLenField("FirmNegotiationID", 0x00, 20),
+        StrFixedLenField("FreeText5", 0x00, 132),
+        StrFixedLenField("PartyOrderOriginationTrader", 0x00, 132),
+        StrFixedLenField("Pad4", "0000", 4),
         PacketListField("QuotReqLegsGrp", None, QuotReqLegsGrpComp),
         PacketListField("TargetParties", None, TargetPartiesComp),
     ]
@@ -5573,25 +5573,25 @@ class SRQSQuoteNotification(Packet):
         ByteField("QuotingStatus", 0),
         ByteField("TradingCapacity", 0),
         ByteField("QuoteCancelReason", 0),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("Pad1", "0", 1),
         LEIntField("PartyIDExecutingTrader", 0),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
-        StrLenField("PartyEnteringTrader", 0x00, 6),
-        StrLenField("QuoteReqID", 0x00, 20),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
-        StrLenField("FreeText5", 0x00, 132),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("PartyEnteringTrader", 0x00, 6),
+        StrFixedLenField("QuoteReqID", 0x00, 20),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("FreeText5", 0x00, 132),
         ByteField("PositionEffect", 0),
-        StrLenField("Account", 0x00, 2),
-        StrLenField("PartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("Account", 0x00, 2),
+        StrFixedLenField("PartyIDBeneficiary", 0x00, 9),
         ByteField("CustOrderHandlingInst", 0),
-        StrLenField("PartyIDOrderOriginationFirm", 0x00, 7),
-        StrLenField("PartyIDPositionAccount", 0x00, 32),
-        StrLenField("PartyIDLocationID", 0x00, 2),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("PartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("PartyIDPositionAccount", 0x00, 32),
+        StrFixedLenField("PartyIDLocationID", 0x00, 2),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
     ]
 
 
@@ -5612,7 +5612,7 @@ class SRQSQuoteResponse(Packet):
         PacketField("ResponseHeader", None, ResponseHeaderComp),
         LELongField("QuoteID", 0),
         LEIntField("NegotiationID", 0),
-        StrLenField("QuoteReqID", 0x00, 20),
+        StrFixedLenField("QuoteReqID", 0x00, 20),
     ]
 
 
@@ -5634,9 +5634,9 @@ class SRQSQuotingStatusRequest(Packet):
         LESignedIntField("MarketSegmentID", 0),
         LEIntField("NegotiationID", 0),
         ByteField("QuotingStatus", 0),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
-        StrLenField("FreeText5", 0x00, 132),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("FreeText5", 0x00, 132),
     ]
 
 
@@ -5657,7 +5657,7 @@ class SRQSStatusBroadcast(Packet):
         PacketField("RBCHeader", None, RBCHeaderComp),
         LEIntField("TradeDate", 0),
         ByteField("TradSesEvent", 0),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("Pad3", "000", 3),
     ]
 
 
@@ -5684,10 +5684,10 @@ class SRQSUpdateDealStatusRequest(Packet):
         LEIntField("TradeID", 0),
         ByteField("TradeReportType", 0),
         ByteField("TrdRptStatus", 0),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
-        StrLenField("FreeText5", 0x00, 132),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("FreeText5", 0x00, 132),
+        StrFixedLenField("Pad3", "000", 3),
     ]
 
 
@@ -5722,11 +5722,11 @@ class SRQSUpdateNegotiationRequest(Packet):
         ByteField("RespondentType", 0),
         ByteField("TradeAggregationTransType", 0),
         ByteField("QuoteCondition", 0),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
-        StrLenField("FreeText5", 0x00, 132),
-        StrLenField("PartyOrderOriginationTrader", 0x00, 132),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("FreeText5", 0x00, 132),
+        StrFixedLenField("PartyOrderOriginationTrader", 0x00, 132),
+        StrFixedLenField("Pad4", "0000", 4),
         PacketListField("TargetParties", None, TargetPartiesComp),
     ]
 
@@ -5757,7 +5757,7 @@ class ServiceAvailabilityBroadcast(Packet):
         ByteField("ApplSeqStatus", 0),
         ByteField("T7EntryServiceStatus", 0),
         ByteField("T7EntryServiceRtmStatus", 0),
-        StrLenField("Pad5", "00000", 5),
+        StrFixedLenField("Pad5", "00000", 5),
     ]
 
 
@@ -5779,7 +5779,7 @@ class ServiceAvailabilityMarketBroadcast(Packet):
         LEIntField("SelectiveRequestForQuoteServiceTradeDate", 0),
         ByteField("SelectiveRequestForQuoteServiceStatus", 0),
         ByteField("SelectiveRequestForQuoteRtmServiceStatus", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -5800,7 +5800,7 @@ class SubscribeRequest(Packet):
         PacketField("RequestHeader", None, RequestHeaderComp),
         LEIntField("SubscriptionScope", 0),
         ByteField("RefApplID", 0),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("Pad3", "000", 3),
     ]
 
 
@@ -5820,7 +5820,7 @@ class SubscribeResponse(Packet):
         PacketField("MessageHeaderOut", None, MessageHeaderOutComp),
         PacketField("ResponseHeader", None, ResponseHeaderComp),
         LEIntField("ApplSubID", 0),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("Pad4", "0000", 4),
     ]
 
 
@@ -5876,35 +5876,35 @@ class TESApproveBroadcast(Packet):
         ByteField("NoInstrAttrib", 0),
         ByteField("NoUnderlyingStips", 0),
         ByteField("MessageEventSource", 0),
-        StrLenField("TradeReportID", 0x00, 20),
-        StrLenField("PartyExecutingFirm", 0x00, 5),
-        StrLenField("PartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("PartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("PartyExecutingTrader", 0x00, 6),
         ByteField("PartyIDEnteringFirm", 0),
-        StrLenField("PartyEnteringTrader", 0x00, 6),
+        StrFixedLenField("PartyEnteringTrader", 0x00, 6),
         ByteField("PositionEffect", 0),
-        StrLenField("RootPartyExecutingFirm", 0x00, 5),
-        StrLenField("RootPartyExecutingTrader", 0x00, 6),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
-        StrLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
-        StrLenField("Account", 0x00, 2),
-        StrLenField("PartyIDPositionAccount", 0x00, 32),
-        StrLenField("PartyIDOrderOriginationFirm", 0x00, 7),
-        StrLenField("PartyIDBeneficiary", 0x00, 9),
-        StrLenField("PartyIDLocationID", 0x00, 2),
+        StrFixedLenField("RootPartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("RootPartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("PartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("Account", 0x00, 2),
+        StrFixedLenField("PartyIDPositionAccount", 0x00, 32),
+        StrFixedLenField("PartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("PartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("PartyIDLocationID", 0x00, 2),
         ByteField("CustOrderHandlingInst", 0),
-        StrLenField("ComplianceText", 0x00, 20),
-        StrLenField("UnderlyingSecurityID", 0x00, 12),
-        StrLenField("UnderlyingSecurityDesc", 0x00, 30),
-        StrLenField("UnderlyingCurrency", 0x00, 3),
-        StrLenField("UnderlyingIssuer", 0x00, 30),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("ComplianceText", 0x00, 20),
+        StrFixedLenField("UnderlyingSecurityID", 0x00, 12),
+        StrFixedLenField("UnderlyingSecurityDesc", 0x00, 30),
+        StrFixedLenField("UnderlyingCurrency", 0x00, 3),
+        StrFixedLenField("UnderlyingIssuer", 0x00, 30),
+        StrFixedLenField("Pad3", "000", 3),
         PacketListField("TrdInstrmntLegGrp", None, TrdInstrmntLegGrpComp),
         PacketListField("InstrumentEventGrp", None, InstrumentEventGrpComp),
         PacketListField("InstrumentAttributeGrp", None, InstrumentAttributeGrpComp),
         PacketListField("UnderlyingStipGrp", None, UnderlyingStipGrpComp),
-        StrLenField("VarText", 0, 2000),
+        StrFixedLenField("VarText", 0, 2000),
     ]
 
 
@@ -5955,21 +5955,21 @@ class TESBroadcast(Packet):
         ByteField("HedgeType", 0),
         ByteField("SwapClearer", 0),
         ByteField("MessageEventSource", 0),
-        StrLenField("TradeReportText", 0x00, 20),
-        StrLenField("TradeReportID", 0x00, 20),
-        StrLenField("RootPartyExecutingFirm", 0x00, 5),
-        StrLenField("RootPartyExecutingTrader", 0x00, 6),
-        StrLenField("UnderlyingSecurityID", 0x00, 12),
-        StrLenField("UnderlyingSecurityDesc", 0x00, 30),
-        StrLenField("UnderlyingCurrency", 0x00, 3),
-        StrLenField("UnderlyingIssuer", 0x00, 30),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("TradeReportText", 0x00, 20),
+        StrFixedLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("RootPartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("RootPartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("UnderlyingSecurityID", 0x00, 12),
+        StrFixedLenField("UnderlyingSecurityDesc", 0x00, 30),
+        StrFixedLenField("UnderlyingCurrency", 0x00, 3),
+        StrFixedLenField("UnderlyingIssuer", 0x00, 30),
+        StrFixedLenField("Pad1", "0", 1),
         PacketListField("SideAllocGrpBC", None, SideAllocGrpBCComp),
         PacketListField("TrdInstrmntLegGrp", None, TrdInstrmntLegGrpComp),
         PacketListField("InstrumentEventGrp", None, InstrumentEventGrpComp),
         PacketListField("InstrumentAttributeGrp", None, InstrumentAttributeGrpComp),
         PacketListField("UnderlyingStipGrp", None, UnderlyingStipGrpComp),
-        StrLenField("VarText", 0, 2000),
+        StrFixedLenField("VarText", 0, 2000),
     ]
 
 
@@ -5993,7 +5993,7 @@ class TESCompressionRunStatusBroadcast(Packet):
         ByteField("CompressionAction", 0),
         ByteField("CompressionStatus", 0),
         ByteField("TradePublishIndicator", 0),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("Pad1", "0", 1),
     ]
 
 
@@ -6016,7 +6016,7 @@ class TESCompressionRunStatusRequest(Packet):
         LESignedIntField("MarketSegmentID", 0),
         ByteField("CompressionAction", 0),
         ByteField("TradePublishIndicator", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -6040,7 +6040,7 @@ class TESCompressionRunStatusResponse(Packet):
         ByteField("CompressionAction", 0),
         ByteField("CompressionStatus", 0),
         ByteField("TradePublishIndicator", 0),
-        StrLenField("Pad1", "0", 1),
+        StrFixedLenField("Pad1", "0", 1),
     ]
 
 
@@ -6069,8 +6069,8 @@ class TESDeleteBroadcast(Packet):
         ByteField("TradeReportType", 0),
         ByteField("TrdRptStatus", 0),
         ByteField("MessageEventSource", 0),
-        StrLenField("TradeReportID", 0x00, 20),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -6100,7 +6100,7 @@ class TESExecutionBroadcast(Packet):
         ByteField("Side", 0),
         ByteField("TrdRptStatus", 0),
         ByteField("MessageEventSource", 0),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("Pad2", "00", 2),
     ]
 
 
@@ -6120,7 +6120,7 @@ class TESResponse(Packet):
         PacketField("MessageHeaderOut", None, MessageHeaderOutComp),
         PacketField("ResponseHeader", None, ResponseHeaderComp),
         LEIntField("TESExecID", 0),
-        StrLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("TradeReportID", 0x00, 20),
     ]
 
 
@@ -6148,9 +6148,9 @@ class TESReversalBroadcast(Packet):
         ByteField("TrdRptStatus", 0),
         ByteField("ReversalCancellationReason", 0),
         ByteField("NoSideAllocs", 0),
-        StrLenField("TradeReportID", 0x00, 20),
-        StrLenField("ReversalReasonText", 0x00, 132),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("ReversalReasonText", 0x00, 132),
+        StrFixedLenField("Pad3", "000", 3),
         PacketListField("SideAllocGrpBC", None, SideAllocGrpBCComp),
     ]
 
@@ -6220,23 +6220,23 @@ class TESTradeBroadcast(Packet):
         ByteField("OrderOrigination", 0),
         ByteField("ReversalIndicator", 0),
         ByteField("TradeAggregationTransType", 0),
-        StrLenField("Account", 0x00, 2),
-        StrLenField("RootPartyIDPositionAccount", 0x00, 32),
+        StrFixedLenField("Account", 0x00, 2),
+        StrFixedLenField("RootPartyIDPositionAccount", 0x00, 32),
         ByteField("CustOrderHandlingInst", 0),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
-        StrLenField("RootPartyExecutingFirm", 0x00, 5),
-        StrLenField("RootPartyExecutingTrader", 0x00, 6),
-        StrLenField("RootPartyClearingFirm", 0x00, 5),
-        StrLenField("RootPartyClearingOrganization", 0x00, 4),
-        StrLenField("RootPartyIDBeneficiary", 0x00, 9),
-        StrLenField("RootPartyIDTakeUpTradingFirm", 0x00, 5),
-        StrLenField("RootPartyIDOrderOriginationFirm", 0x00, 7),
-        StrLenField("RootPartyIDExecutionVenue", 0x00, 4),
-        StrLenField("RegulatoryTradeID", 0x00, 52),
-        StrLenField("BasketPartyContraFirm", 0x00, 5),
-        StrLenField("BasketSideTradeReportID", 0x00, 20),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("RootPartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("RootPartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("RootPartyClearingFirm", 0x00, 5),
+        StrFixedLenField("RootPartyClearingOrganization", 0x00, 4),
+        StrFixedLenField("RootPartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("RootPartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("RootPartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("RootPartyIDExecutionVenue", 0x00, 4),
+        StrFixedLenField("RegulatoryTradeID", 0x00, 52),
+        StrFixedLenField("BasketPartyContraFirm", 0x00, 5),
+        StrFixedLenField("BasketSideTradeReportID", 0x00, 20),
     ]
 
 
@@ -6257,7 +6257,7 @@ class TESTradingSessionStatusBroadcast(Packet):
         PacketField("RBCHeader", None, RBCHeaderComp),
         LEIntField("TradeDate", 0),
         ByteField("TradSesEvent", 0),
-        StrLenField("Pad3", "000", 3),
+        StrFixedLenField("Pad3", "000", 3),
     ]
 
 
@@ -6307,14 +6307,14 @@ class TESUploadBroadcast(Packet):
         ByteField("PartyIDSettlementLocation", 0),
         ByteField("SwapClearer", 0),
         ByteField("MessageEventSource", 0),
-        StrLenField("TradeReportID", 0x00, 20),
-        StrLenField("RootPartyExecutingFirm", 0x00, 5),
-        StrLenField("RootPartyExecutingTrader", 0x00, 6),
-        StrLenField("UnderlyingSecurityID", 0x00, 12),
-        StrLenField("UnderlyingSecurityDesc", 0x00, 30),
-        StrLenField("UnderlyingCurrency", 0x00, 3),
-        StrLenField("UnderlyingIssuer", 0x00, 30),
-        StrLenField("Pad2", "00", 2),
+        StrFixedLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("RootPartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("RootPartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("UnderlyingSecurityID", 0x00, 12),
+        StrFixedLenField("UnderlyingSecurityDesc", 0x00, 30),
+        StrFixedLenField("UnderlyingCurrency", 0x00, 3),
+        StrFixedLenField("UnderlyingIssuer", 0x00, 30),
+        StrFixedLenField("Pad2", "00", 2),
         PacketListField("SideAllocExtGrp", None, SideAllocExtGrpComp),
         PacketListField("TrdInstrmntLegGrp", None, TrdInstrmntLegGrpComp),
         PacketListField("InstrumentEventGrp", None, InstrumentEventGrpComp),
@@ -6339,7 +6339,7 @@ class TMTradingSessionStatusBroadcast(Packet):
         PacketField("MessageHeaderOut", None, MessageHeaderOutComp),
         PacketField("RBCHeader", None, RBCHeaderComp),
         ByteField("TradSesEvent", 0),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -6414,9 +6414,9 @@ class TradeBroadcast(Packet):
         ByteField("MultiLegReportingType", 0),
         ByteField("TradeReportType", 0),
         ByteField("TransferReason", 0),
-        StrLenField("RootPartyIDBeneficiary", 0x00, 9),
-        StrLenField("RootPartyIDTakeUpTradingFirm", 0x00, 5),
-        StrLenField("RootPartyIDOrderOriginationFirm", 0x00, 7),
+        StrFixedLenField("RootPartyIDBeneficiary", 0x00, 9),
+        StrFixedLenField("RootPartyIDTakeUpTradingFirm", 0x00, 5),
+        StrFixedLenField("RootPartyIDOrderOriginationFirm", 0x00, 7),
         ByteField("MatchType", 0),
         ByteField("MatchSubType", 0),
         ByteField("Side", 0),
@@ -6427,24 +6427,24 @@ class TradeBroadcast(Packet):
         ByteField("OrderAttributeRiskReduction", 0),
         ByteField("ExecutingTraderQualifier", 0),
         ByteField("RootPartyIDInvestmentDecisionMakerQualifier", 0),
-        StrLenField("Account", 0x00, 2),
-        StrLenField("RootPartyIDPositionAccount", 0x00, 32),
+        StrFixedLenField("Account", 0x00, 2),
+        StrFixedLenField("RootPartyIDPositionAccount", 0x00, 32),
         ByteField("PositionEffect", 0),
         ByteField("CustOrderHandlingInst", 0),
-        StrLenField("FreeText1", 0x00, 12),
-        StrLenField("FreeText2", 0x00, 12),
-        StrLenField("FreeText3", 0x00, 12),
+        StrFixedLenField("FreeText1", 0x00, 12),
+        StrFixedLenField("FreeText2", 0x00, 12),
+        StrFixedLenField("FreeText3", 0x00, 12),
         ByteField("OrderCategory", 0),
         ByteField("OrdType", 0),
         ByteField("RelatedProductComplex", 0),
         ByteField("OrderSide", 0),
-        StrLenField("RootPartyClearingOrganization", 0x00, 4),
-        StrLenField("RootPartyExecutingFirm", 0x00, 5),
-        StrLenField("RootPartyExecutingTrader", 0x00, 6),
-        StrLenField("RootPartyClearingFirm", 0x00, 5),
-        StrLenField("RegulatoryTradeID", 0x00, 52),
-        StrLenField("RootPartyIDExecutionVenue", 0x00, 4),
-        StrLenField("Pad6", "000000", 6),
+        StrFixedLenField("RootPartyClearingOrganization", 0x00, 4),
+        StrFixedLenField("RootPartyExecutingFirm", 0x00, 5),
+        StrFixedLenField("RootPartyExecutingTrader", 0x00, 6),
+        StrFixedLenField("RootPartyClearingFirm", 0x00, 5),
+        StrFixedLenField("RegulatoryTradeID", 0x00, 52),
+        StrFixedLenField("RootPartyIDExecutionVenue", 0x00, 4),
+        StrFixedLenField("Pad6", "000000", 6),
     ]
 
 
@@ -6466,8 +6466,8 @@ class TradingSessionStatusBroadcast(Packet):
         LESignedIntField("MarketSegmentID", 0),
         LEIntField("TradeDate", 0),
         ByteField("TradSesEvent", 0),
-        StrLenField("RefApplLastMsgID", 0x00000000000000000000000000000000, 16),
-        StrLenField("Pad7", "0000000", 7),
+        StrFixedLenField("RefApplLastMsgID", 0x00000000000000000000000000000000, 16),
+        StrFixedLenField("Pad7", "0000000", 7),
     ]
 
 
@@ -6487,7 +6487,7 @@ class UnsubscribeRequest(Packet):
         PacketField("MessageHeaderIn", None, MessageHeaderInComp),
         PacketField("RequestHeader", None, RequestHeaderComp),
         LEIntField("RefApplSubID", 0),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("Pad4", "0000", 4),
     ]
 
 
@@ -6552,12 +6552,12 @@ class UploadTESTradeRequest(Packet):
         ByteField("HedgeType", 0),
         ByteField("PartyIDSettlementLocation", 0),
         ByteField("ValueCheckTypeMinLotSize", 0),
-        StrLenField("TradeReportID", 0x00, 20),
-        StrLenField("TradeReportText", 0x00, 20),
-        StrLenField("UnderlyingSecurityID", 0x00, 12),
-        StrLenField("UnderlyingSecurityDesc", 0x00, 30),
-        StrLenField("UnderlyingCurrency", 0x00, 3),
-        StrLenField("UnderlyingIssuer", 0x00, 30),
+        StrFixedLenField("TradeReportID", 0x00, 20),
+        StrFixedLenField("TradeReportText", 0x00, 20),
+        StrFixedLenField("UnderlyingSecurityID", 0x00, 12),
+        StrFixedLenField("UnderlyingSecurityDesc", 0x00, 30),
+        StrFixedLenField("UnderlyingCurrency", 0x00, 3),
+        StrFixedLenField("UnderlyingIssuer", 0x00, 30),
         ByteField("SwapClearer", 0),
         PacketListField("SideAllocExtGrp", None, SideAllocExtGrpComp),
         PacketListField("TrdInstrmntLegGrp", None, TrdInstrmntLegGrpComp),
@@ -6583,8 +6583,8 @@ class UserLoginRequest(Packet):
         PacketField("MessageHeaderIn", None, MessageHeaderInComp),
         PacketField("RequestHeader", None, RequestHeaderComp),
         LEIntField("Username", 0),
-        StrLenField("Password", 0x00, 32),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("Password", 0x00, 32),
+        StrFixedLenField("Pad4", "0000", 4),
     ]
 
 
@@ -6622,7 +6622,7 @@ class UserLogoutRequest(Packet):
         PacketField("MessageHeaderIn", None, MessageHeaderInComp),
         PacketField("RequestHeader", None, RequestHeaderComp),
         LEIntField("Username", 0),
-        StrLenField("Pad4", "0000", 4),
+        StrFixedLenField("Pad4", "0000", 4),
     ]
 
 
@@ -6652,3 +6652,4 @@ class UserLogoutResponse(Packet):
             p = struct.pack("<H", tmp_len) + p[2:]
         return p + pay # edit if previous is changed
 	
+bind_layers(UDP, PacketHeader, sport=65333, dport=65333)

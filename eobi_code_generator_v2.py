@@ -205,7 +205,7 @@ def gen_fields(e, st, dt, us, sizes, min_sizes, version, o=sys.stdout, comment=F
 		atts = []
 		t = dt.get(m.get('type'))
 		if is_padding(t):
-			print(f'''        StrLenField("{m.get('name')}", "{'0' * int(t.get('size'))}", {t.get('size')}),''', end='', file=o)
+			print(f'''        StrFixedLenField("{m.get('name')}", "{'0' * int(t.get('size'))}", {t.get('size')}),''', end='', file=o)
 			print('', file=o)
 		elif is_int(t):
 			atts.append(pp_int_type(t))
@@ -250,7 +250,7 @@ def gen_fields(e, st, dt, us, sizes, min_sizes, version, o=sys.stdout, comment=F
 			if t.get('size') == None:
 				print(f'{t.attrib} 1',file=sys.stderr)
 
-			print(f'''        StrLenField("{m.get('name')}", {dft_str}, {t.get('size')}),''', file=o)
+			print(f'''        StrFixedLenField("{m.get('name')}", {dft_str}, {t.get('size')}),''', file=o)
 		else:
 			t = st.get(m.get('type'))
 			# print(t.get('type'), file=sys.stderr)
@@ -261,7 +261,17 @@ def gen_fields(e, st, dt, us, sizes, min_sizes, version, o=sys.stdout, comment=F
 	print('    ]', file=o)	
 	print('', file=o)
 
-def gen_block(name, e, st, dt, us, sizes, min_sizes, max_sizes, version, o=sys.stdout):
+def gen_guess_fields(ts, o):
+	print(f'''    def guess_payload_class(self, payload):''', file=o)
+	print(f'''        t = struct.unpack('<h', payload[2:4])[0]''', file=o)
+	for tid, name in ts:
+		print(f'''        if t == {tid}: return {name}''', file=o)
+	print(f'''        else: return Packet.guess_payload_class(self, payload)''', file=o)
+	
+
+
+
+def gen_block(name, e, st, dt, us, ts, sizes, min_sizes, max_sizes, version, o=sys.stdout):
 	print(f'class {name}(Packet):', file=o)
 	print(f"    name = '{name}'", file=o)
 	print(f'	# sizes = ({min_sizes[name]}, {max_sizes[name]})\n', file=o)
@@ -271,6 +281,9 @@ def gen_block(name, e, st, dt, us, sizes, min_sizes, max_sizes, version, o=sys.s
 
 	if e.get('type') in ('Sequence', 'Component'):
 		gen_extract_padding(o)
+	
+	if name == 'PacketHeader':
+		gen_guess_fields(ts, o)
 
 
 def gen_post_build(o):
@@ -292,19 +305,22 @@ def gen_extract_padding(o):
 
 # rule of thumb: when generating informations, generate for those that is of message type first, since
 # messages are assembled using non message type
-def gen_blocks(version, st, dt, us, o=sys.stdout):
+def gen_blocks(version, st, dt, us, ts, o=sys.stdout):
     sizes = get_sizes(st, dt)
     min_sizes = get_min_sizes(st, dt)
     max_sizes = get_max_sizes(st, dt)
     for name, e in st.items():
         if e.get('type') == 'Message':
             continue
-        gen_block(name, e, st, dt, us, sizes, min_sizes, max_sizes, version, o)
+        gen_block(name, e, st, dt, us, ts, sizes, min_sizes, max_sizes, version, o)
     for name, e in st.items():
         if e.get('type') != 'Message':
             continue
-        gen_block(name, e, st, dt, us, sizes, min_sizes, max_sizes, version, o)
+        gen_block(name, e, st, dt, us, ts, sizes, min_sizes, max_sizes, version, o)
         gen_post_build(o)
+
+def gen_binding(o=sys.stdout):
+	print(f'''bind_layers(UDP, PacketHeader, sport=65333, dport=65333)''', file=o)
 
 def main():
 	xml = ET.parse(eobi_preprocessor_v2.PATH_TO_SPEC)
@@ -314,8 +330,8 @@ def main():
 	gen_header()
 	gen_version(xml)
 	gen_enums(dt, ts)
-	gen_blocks(version, st, dt, us)
-
+	gen_blocks(version, st, dt, us, ts)
+	gen_binding()
 	# gen_message_flows(mf)
 
 if __name__ == '__main__':
