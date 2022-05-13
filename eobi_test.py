@@ -484,4 +484,5 @@ if __name__ == '__main__':
     auction_clearing_test()
     product_state_change_test()
     instrument_summary_test()
+
     subprocess.run("rm test.pcap".split(' '))

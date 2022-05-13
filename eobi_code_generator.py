@@ -323,8 +323,7 @@ def gen_binding(o=sys.stdout):
 	print(f'''bind_layers(UDP, PacketHeader, sport=65333, dport=65333)''', file=o)
 
 def main():
-	xml = ET.parse(eobi_preprocessor_v2.PATH_TO_SPEC)
-	[dt, st, ts, us, mf] = eobi_preprocessor_v2.main()
+	[xml, dt, st, ts, us, mf] = eobi_preprocessor_v2.main()
 	version = (xml.getroot().get('version'), xml.getroot().get('subVersion'))
 
 	gen_header()

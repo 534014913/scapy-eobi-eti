@@ -5,20 +5,8 @@
 # NB: The generated code is licensed differently, i.e. it is
 # licensed under the permissive Boost Software License.
 
-from re import U
 import xml.etree.ElementTree as ET
-import pprint
-
-from sklearn.cluster import k_means
-
-PATH_TO_SPEC = "./eobi/eobi.xml"
-PATH_TO_ETI_SPEC = "./T7_R-2/eti_derivatives.xml"
-
-root = ET.parse(PATH_TO_SPEC).getroot()
-
-# some test node that can be removed
-xml_application_message = root.find("ApplicationMessages")
-hdr_node = root.find(".//ApplicationMessages/ApplicationMessage/[@name='PacketHeader']")
+import sys
 
 def get_data_types(xml_tree):
 	root = xml_tree.getroot()
@@ -85,9 +73,8 @@ def get_message_flows(xml_tree):
 	return mf
 
 def main():
-	xml_tree = ET.parse(PATH_TO_ETI_SPEC)
-	root = ET.parse(PATH_TO_SPEC).getroot()
-	info = (xml_tree.getroot().get('name'), xml_tree.getroot().get('version'))
+	path_to_spec = sys.argv[1]
+	xml_tree = ET.parse(path_to_spec)
 
 	dt = get_data_types(xml_tree)
 	st = get_structrue(xml_tree)
@@ -96,7 +83,7 @@ def main():
 
 	us = get_usages(xml_tree)
 	mf = get_message_flows(xml_tree)
-	return [dt, st, ts, us, mf]
+	return [xml_tree, dt, st, ts, us, mf]
 
 if __name__ == '__main__':
 	main()
