@@ -1,13 +1,18 @@
 import sys
 
-from torch import is_signed
-import eobi_preprocessor_v2
+from parso import parse
+import eobi_preprocessor
 import itertools
 import re
 import xml.etree.ElementTree as ET
-from enum import IntEnum
-import struct
-# from dataclesses import dataclass, field, is_dataclass
+import argparse
+
+def parse_args():
+	p = argparse.ArgumentParser(description='T7 EOBI/ETI Code Generator')
+	p.add_argument('-i', help="Path to eobi/eti spec file")
+	p.add_argument('-o', help="Path to the ouput file you want to write to")
+	return p.parse_args()
+
 
 def gen_header(o=sys.stdout):
 	print('''\
@@ -20,7 +25,7 @@ from scapy.all import *
 # code adapted from George Sauthoff with the following liscense info
 # SPDX-FileCopyrightText: © 2021 Georg Sauthoff <mail@gms.tf>
 # SPDX-License-Identifier: BSL-1.0
-		''')
+		''', file=o)
 
 def gen_version(d, o=sys.stdout): # d -> data
 	r = d.getroot()
@@ -323,14 +328,21 @@ def gen_binding(o=sys.stdout):
 	print(f'''bind_layers(UDP, PacketHeader, sport=65333, dport=65333)''', file=o)
 
 def main():
-	[xml, dt, st, ts, us, mf] = eobi_preprocessor_v2.main()
+	args = parse_args()
+	out = sys.stdout
+	if args.i is None:
+		print("Path to the specification file is missing", file=sys.stderr)
+		exit(1)
+	if args.o is not None:
+		out = open(args.o, 'w')
+	[xml, dt, st, ts, us, mf] = eobi_preprocessor.main(args.i)
 	version = (xml.getroot().get('version'), xml.getroot().get('subVersion'))
 
-	gen_header()
-	gen_version(xml)
-	gen_enums(dt, ts)
-	gen_blocks(version, st, dt, us, ts)
-	gen_binding()
+	gen_header(o=out)
+	gen_version(xml, o = out)
+	gen_enums(dt, ts, o = out)
+	gen_blocks(version, st, dt, us, ts, o=out)
+	gen_binding(o=out)
 	# gen_message_flows(mf)
 
 if __name__ == '__main__':

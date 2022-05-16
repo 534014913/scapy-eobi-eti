@@ -72,8 +72,7 @@ def get_message_flows(xml_tree):
 		mf[m.get('name')] = parse_mf(m)
 	return mf
 
-def main():
-	path_to_spec = sys.argv[1]
+def main(path_to_spec):
 	xml_tree = ET.parse(path_to_spec)
 
 	dt = get_data_types(xml_tree)
